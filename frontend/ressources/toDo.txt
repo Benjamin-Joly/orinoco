@@ -1,0 +1,24 @@
+///////////////landing (1sem)
+header, vaguelettes => clip-path, vérifier compatibilité. /0.5
+cta_panier :after =>anim couleur./ 0.25
+photo hero => wiggle /??
+slideshow obligatoire => jeu transformation 3d + anim composant./1
+forme de fond => clip path ou svg background /.25
+
+///////produit (2.25)
+
+forme de fond + trou /.25
+photo produit wiggle; /0;
+anim options changement de couleur. /2
+
+//////////panier (2)
+branchement dynamique à l'API ajout/suppr incrémentation ou décrémentation produit.
+montant total en lien.
+
+//////////récap 0.5
+
+
+
+////////////////////////////////paramURL
+
+GET http://localhost:3000/api/cameras/5be1ed3f1c9d44000030b061 <= exemple appel ID
