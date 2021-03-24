@@ -21,7 +21,7 @@ btn.addEventListener('click', (e) => {
       "city": city,
       "email": email
     },
-    "products": order
+    "products": resultOrder
   });
   
   var requestOptions = {
