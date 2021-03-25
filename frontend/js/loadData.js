@@ -1,4 +1,4 @@
-/////////////////////////////////////////////////*****************Get the product ID and iterate a button and a css class for each ID it receives. */
+////////////////////////////////Basic Init before Load datas
 
 let url = 'http://localhost:3000/api/cameras';
 
@@ -9,7 +9,11 @@ let productName = [];
 let productPrice = [];
 let productOpt = [];
 let productImgUrl = [];
+const orderWrap = document.getElementById('order-wrap');
+let btnProduct;
+let rmvProduct;
 
+////////////////////////////////contact API get and save DATA on separated arrays
 fetch(url).then((response) => response.json().then((data) => {
       data.forEach(element => {
         productId.push(element._id);
@@ -22,10 +26,8 @@ fetch(url).then((response) => response.json().then((data) => {
       });
 }));
 
-const orderWrap = document.getElementById('order-wrap');
-let btnProduct;
-let rmvProduct;
 
+////////////////////////////////short delay before displaying data so everything can be loaded.
   const loadDataFirst = new Promise((resolve, reject) => {
       window.addEventListener('load', () => {
         setTimeout(() => {
@@ -35,21 +37,20 @@ let rmvProduct;
   });
 
   loadDataFirst.then(() => {
-    ////////////loadData.js/////////
+  ////////////loadData.js//////Get data from API and after short loading time create them on the landing page HTML.
     return createNewItem();   
-}).then((result) => {
-  ////////////cart.js/////////
+}).then(() => {
+  ////////////cart.js/////////init addToCart btns
   return cartBtnBhvr();
-}).then((display) => {
-  ////////////cart.js/////////
+}).then(() => {
+  ////////////cart.js/////////update the order on a client side preview
   return clientResult();
-}).then((test) => {
-  ////////////cart.js/////////
-  return buildRmvBtns();
-}).then((test) => {
-  ////////////cart.js/////////
+}).then(() => {
+  ////////////cart.js/////////build ordered items on the cart page
   return buildSelectedItems();
 })
+
+  //////////////////Get data from API and after short loading time create them on the landing page HTML.
 const createNewItem = () => {
   productList.forEach(item => {
    // const objSelected = productList.filter(Object => Object._id == item);
@@ -68,16 +69,11 @@ const createNewItem = () => {
       <p class="product__item--price">
       ${item.price}
       </p>
-      <button class="product__btn product__btn--${itemIndexNumber}">
+      <button class="product__btn product__btn--${item._id}" value ="${item._id}">
         <div class="cart__icon">ajouter au panier</div>
       </button>
     </div>`;
     orderWrap.appendChild(newItem);
   });
   btnProduct = Array.from(document.querySelectorAll('.product__btn'));
-  rmvProduct = Array.from(document.querySelectorAll('.rmv__btn'));
 }
-
-
-//btnNumber =>  itemIndexNumber, newItem => newItem
-//don't forget to set the btn elements this class product__btn

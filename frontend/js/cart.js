@@ -1,123 +1,97 @@
-/////////////////////////////////////////////////*****************Add/suppress products in the cart by using localStorage. Updates on live the product number. Still need to refresh the page to erase the order*/
-
+////////////////////////////////////////basic init. before adding data.
 const orderResults = document.getElementById('order-results');
 const rmvCart = document.getElementById('remove-cart');
 let filterIndex = [];
 let resultOrder = [];
-const divideResOrdr = () =>{
-  resultOrder = [filterIndex*=productList.length]
-}
-
+let rmvBtn = [];
 let selectedItemWrap = document.createElement('div');
-  selectedItemWrap.classList.add('selected-item__wrap');
-  orderWrap.appendChild(selectedItemWrap);
+    selectedItemWrap.classList.add('selected-item__wrap');
+    orderWrap.appendChild(selectedItemWrap);
 
+
+/////////////////////////////////////////get the already-saved order on client side
 function clientResult(){
   if(localStorage.length !==0){
     resultOrder = localStorage.getItem('order').split(',');
-        if(localStorage.length !== 0){
-          return orderResults.textContent = `vous avez commandé ${resultOrder.length} produits`;
-        }else if (localStorage.length == 0){
-        return orderResults.textContent = `vous n'avez pas sélectionné d'articles`;
-        }else{
-          return orderResults.textContent = `choisissez un produit`;
-        }        
+    return orderResults.textContent = `vous avez commandé ${resultOrder.length} produits`;    
   } 
 }
-/*//////////////////////////////////////////////////////////////////à vérifier
-function getDataFromOrder(){
-    resultOrder.forEach(el => {
-    let test = productList.filter(Object => Object._id == el)
-    console.log(test);
-});
-}
-*/
 
 
+////////////////////////////////////////Init. basic functionalities after all data is loaded
 window.addEventListener('load', () => {
   setTimeout(() => {
     clientResult();
+    supprBuiltItems();
     //buildSelectedItems();
   }, 10)
 });
 
-
+////////////////////////////////////////Init. order array with splited data from localstorage
 let order = localStorage.length <= 0 ? [] : [localStorage.getItem('order').split(',')];
 
-
+////////////////////////////////////////add clicked button value to order array and save it to localstorage before updating client order preview
 const cartBtnBhvr = () => {
   btnProduct.forEach(item => {
     item.addEventListener('click', (e) => {
-      let clickNumb = btnProduct.indexOf(item);
-      order.push(productId[clickNumb]);
+      order.push(item.value);
       localStorage.setItem('order', order);
       console.log(order);
       clientResult(); 
-      buildRmvBtns();
-      buildSelectedItems();
+      //buildRmvBtns();
+      // buildSelectedItems();
     }) 
   });
   //clientResult(); 
 }
-/*
-const rmvProduct = () => {
-    rmvProduct.forEach(item => {
-        item.addEventListener('click', (e) => {
-            if(order.filter(item)==item)
-        })
-    })
-};
-<button class="rmv__btn rmv__btn--${item._id}">
-        <div class="cart__icon">retirer du panier</div>
-      </button>
-*/
-let rmvBtn = document.getElementById('remove-product');
-const buildRmvBtns = () => {
-    //resultOrder.forEach(item => {
-        if(resultOrder.length > 0){
-            rmvBtn.style.display = 'inline';
-        }else{
-            rmvBtn.style.display = 'none';
-        }
-   // })
-};
-
-    rmvBtn.addEventListener('click', (e) => {
-        resultOrder.pop();
-        order = resultOrder;
-          if(resultOrder.length !== 0){
-            localStorage.setItem('order', order);
-            clientResult(); 
-
-          }else{
-            localStorage.clear();
-            document.location.reload();
-            clientResult(); 
-          }
-        })
 
 
+
+    
+
+////////////////////////////////////////////////cart add order items
 const buildSelectedItems = () => {
-        resultOrder.forEach(el => {
-      const selectedItem = document.createElement('div');
-      selectedItem.classList.add('selected-item');
+  if(resultOrder.length >= 0){
+    resultOrder.forEach(el => {
       let commonId = productList.filter(Object => Object._id == el);
-      console.log(el);
-      console.log(commonId);
-      let selectedItemNumb = '';
+      const selectedItem = document.createElement('div');
+      selectedItem.classList.add('selected-item', `selected-item__${commonId[0]._id}`);
+        console.log(commonId[0]._id);
       selectedItem.innerHTML = `<h3 class="cart-selected__heading">${commonId[0].name}</h3>
         <p class="cart-selected__opt">${commonId[0].lenses}</p>
-        <p class="cart-selected__price">${commonId[0].price}</p>
-        <p class="cart-selected__multiple">${selectedItemNumb}</p>
-        <button class="cart-selected__btn remove__product">-</btn>`;
-     /* let checkMultiples = resultOrder.filter(Element => Element == el);
-      console.log(checkMultiples.length);
-          if(checkMultiples.length >= 1){
-            selectedItemNumb.innerText = checkMultiples.length;
-          }*/
-          selectedItemWrap.appendChild(selectedItem);
-        });    
+        <p class="cart-selected__price">${commonId[0].price}</p>        
+        <button class="cart-selected__btn rmv__btn" value="${commonId[0]._id}">X</btn>`;
+
+        selectedItemWrap.appendChild(selectedItem);
+          /////////////////////////////////////////////////////filter
+        });
+  }
 }
+////////////////////////////////////////////////cart remove order items
+const supprBuiltItems = () => {
+  rmvBtn = Array.from(document.querySelectorAll('.rmv__btn'));
+    rmvBtn.forEach(item => {
+      item.addEventListener('click', () => {
+      const btnParent = item.parentNode;
+      btnParent.classList.add('selected-item--hidden');
+      console.log(resultOrder);
+      console.log(item.value);
+      const id = resultOrder.indexOf(item.value);
+      console.log(id);
+      const removedId = resultOrder.splice(id, 1);
+      console.log(removedId);
+      console.log(resultOrder); 
+      order=resultOrder;
+      console.log(order);
+      localStorage.setItem('order', order);
+      clientResult();
+        if(resultOrder[0] == '')
+        localStorage.clear();
+      }) 
+    });
+}
+
+
 
 //////////////////////////////////////////////////////////To display LocalStorage state after clear() method page needs to be refreshed.
 
@@ -126,5 +100,3 @@ const buildSelectedItems = () => {
     orderResults.textContent = `choisissez un produit`;
     document.location.reload();
 });
-
-//console.log(order);

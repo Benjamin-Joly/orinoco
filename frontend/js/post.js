@@ -9,22 +9,26 @@ btn.addEventListener('click', (e) => {
   const address = document.getElementById('address').value;
   const city = document.getElementById('city').value;
   const email = document.getElementById('email').value;
-  //////////////////////////////////////////////////////////////////write the fetch request with the right format
+////////////////////////////////Regex and security.
+
+
+
+//////////////////////////////////////////////////////////////////write the POST request with the right format and POST client side order data
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   
-  var raw = JSON.stringify({
-    "contact": {
+  let raw = JSON.stringify({
+    "contact": { 
       "firstName": firstName,
       "lastName": lastName,
       "address": address,
       "city": city,
       "email": email
     },
-    "products": resultOrder
+    "products": resultOrder//Order list from client side => clientResult();
   });
   
-  var requestOptions = {
+  let requestOptions = {
     method: 'POST',
     headers: myHeaders,
     body: raw,
