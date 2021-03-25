@@ -13,6 +13,14 @@ const orderWrap = document.getElementById('order-wrap');
 let btnProduct;
 let rmvProduct;
 
+
+const changePriceUnit = () => {
+  productList.forEach(el => {
+    el.price === (el.price/=100);
+    console.log(el.price);
+  })
+}
+
 ////////////////////////////////contact API get and save DATA on separated arrays
 fetch(url).then((response) => response.json().then((data) => {
       data.forEach(element => {
@@ -38,7 +46,10 @@ fetch(url).then((response) => response.json().then((data) => {
 
   loadDataFirst.then(() => {
   ////////////loadData.js//////Get data from API and after short loading time create them on the landing page HTML.
-    return createNewItem();   
+    return changePriceUnit();   
+}).then(() => {
+  ////////////cart.js/////////init addToCart btns
+  return createNewItem();
 }).then(() => {
   ////////////cart.js/////////init addToCart btns
   return cartBtnBhvr();
@@ -47,8 +58,16 @@ fetch(url).then((response) => response.json().then((data) => {
   return clientResult();
 }).then(() => {
   ////////////cart.js/////////build ordered items on the cart page
+  return supprBuiltItems();
+}).then(() => {
+  ////////////cart.js/////////build ordered items on the cart page
   return buildSelectedItems();
+}).then(() => {
+  ////////////cart.js/////////update cart value in €
+  return sumFromOrder();
 })
+
+
 
   //////////////////Get data from API and after short loading time create them on the landing page HTML.
 const createNewItem = () => {
@@ -67,7 +86,7 @@ const createNewItem = () => {
       ${item.description}
       </p>
       <p class="product__item--price">
-      ${item.price}
+      ${item.price} €
       </p>
       <button class="product__btn product__btn--${item._id}" value ="${item._id}">
         <div class="cart__icon">ajouter au panier</div>
