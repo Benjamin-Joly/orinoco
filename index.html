@@ -1,41 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr-fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="frontend/dist/css/style.min.css">
     <title>orinoco | cameras de collections</title>
+    <meta name="description" content="Orinoco le site pour les collectionneurs | vente et achat d'appareils photos de collection, customisation de l'objectif et des optiques">
 </head>
 <body>
-    <div id="form-wrap" style="display:flex;flex-direction:column;">
-      <form action="" method="" style="display:flex;flex-direction:column;max-width:50%;margin:20px;" id="form">
-        <label for="first-name">Prénom</label>
-        <input type="text" id="first-name">
-        <label for="last-name">Nom</label>
-        <input type="text" id="last-name">
-        <label for="address">Adresse</label>
-        <input type="text" id="address">
-        <label for="city">Ville</label>
-        <input type="text" id="city">
-        <label for="email">Mail</label>
-        <input type="text" id="email">
-        <input type="submit" value="post" id="btn">
-      </form>
-    </div> 
-    <div style="display:flex;flex-direction:column;max-width:50%;margin:20px;" id="result-wrap">
-      <p id="result-text">Commande</p>
+    <div id="order-wrap" class="cart__wrap">
       <p id="total-cart"></p>
-    </div>
-    <div id="order-wrap">
+      <p id="order-results"></p>
       <div id="remove-section">
         <button id="remove-cart" class="rmv-product">supprimer mon panier</button>
       </div>
     </div>
-    <p id="order-results">Vous n'avez pas sélectionné d'articles</p>
-  <script src="frontend/js/loadData.js"></script> 
-  <script src="frontend/js/cart.js"></script> 
-  <script src="frontend/js/post.js"></script> 
-  <script src="frontend/js/front.js"></script>   
+    <main id="main">
+    </main>
+
+  <!--Fonctionnalités-->
+  <script src="frontend/js/utils.js"></script>  <!--Variables et fonctions d'initialisation-->
+  <script src="frontend/js/landing.js"></script> <!--LP-->
+  <script src="frontend/js/loadData.js"></script> <!--fetch-->
+  <script src="frontend/js/cart.js"></script> <!--logique panier-->
+  <!-- <script src="frontend/js/post.js"></script> POST & formatage -->
+  <script src="frontend/js/front.js"></script> <!--Cosmétique-->
 </body>
 </html>
