@@ -5,6 +5,7 @@ let filterIndex = [];
 let resultOrder = [];
 let rmvBtn = [];
 let selectedItemWrap = document.createElement('div');
+    selectedItemWrap.id = 'current__cart';
     selectedItemWrap.classList.add('selected-item__wrap');
     orderWrap.appendChild(selectedItemWrap);
 let selectedItem;
@@ -18,14 +19,6 @@ function clientResult(){
     return orderResults.textContent = `vous avez commandé ${resultOrder.length} produits`;  
   } 
 }
-
-
-////////////////////////////////////////Init. basic functionalities after all data is loaded
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    supprBuiltItems();
-  }, 10)
-});
 
 ////////////////////////////////////////Init. order array with splited data from localstorage
 let order = localStorage.length <= 0 ? [] : [localStorage.getItem('order').split(',')];
@@ -41,12 +34,16 @@ const cartBtnBhvr = () => {
   });
 }
 
+const getCommonId = (i) => {
+ return (productList.filter(Object => Object._id == i));
+}
+
 
 ////////////////////////////////////////////////cart add order items
 const buildSelectedItems = () => {
-  if(resultOrder.length >= 0){
+  if(resultOrder.length >= 0){  
     resultOrder.forEach(el => {
-      let commonId = productList.filter(Object => Object._id == el);
+      let commonId = getCommonId(el);
       selectedItem = document.createElement('div');
       selectedItem.classList.add('selected-item', `selected-item__${commonId[0]._id}`);
       selectedItem.innerHTML = `<h3 class="cart-selected__heading">${commonId[0].name}</h3>
@@ -56,54 +53,64 @@ const buildSelectedItems = () => {
         selectedItemWrap.appendChild(selectedItem); 
         //////////////////////////////////////////////////Add sum to cart info
         });
+        
+        btnProduct.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          let commonId = getCommonId(btn.value);
+          selectedItem = document.createElement('div');
+          selectedItem.classList.add('selected-item', `selected-item__${commonId[0]._id}`);
+          selectedItem.innerHTML = `<h3 class="cart-selected__heading">${commonId[0].name}</h3>
+            <p class="cart-selected__opt">${commonId[0].lenses}</p>
+            <p class="cart-selected__price">${commonId[0].price} €</p>      
+            <button class="cart-selected__btn rmv__btn" value="${commonId[0]._id}">X</btn>`;
+            selectedItemWrap.appendChild(selectedItem);
+            
+            clientResult(); 
+            let cartResult = totalCart += commonId[0].price;
+            totalCart==cartResult;
+            totalCartField.textContent = `${totalCart} €`;
+        })
+      })
   }
 }
 
-/*console.log(commonId[0].price);
-
-*/
-
 const sumFromOrder = () => {
   resultOrder.forEach(element => {
-    let objFromOrder = productList.filter(Object => Object._id == element);
+    let objFromOrder = getCommonId(element);
     let cartResult = totalCart += objFromOrder[0].price;
     totalCart==cartResult;
-    console.log(totalCart);
   })
     totalCartField.textContent = `${totalCart} €`;
 }
 
 
 
-
 ////////////////////////////////////////////////cart remove order items
 const supprBuiltItems = () => {
   rmvBtn = Array.from(document.querySelectorAll('.rmv__btn'));
-    rmvBtn.forEach(item => {
-      item.addEventListener('click', () => {
-      const btnParent = item.parentNode;
-      btnParent.classList.add('selected-item--hidden');
-      console.log(resultOrder);
-      console.log(item.value);
-      const id = resultOrder.indexOf(item.value);
-      const removedId = resultOrder.splice(id, 1);
-      console.log(removedId);
-      console.log(resultOrder); 
-      order=resultOrder;
-      console.log(order);
-      localStorage.setItem('order', order);
-      /////////////////////////////////////////////////////////////////////////////////////////bloc répétition
-      let objFromOrder = productList.filter(Object => Object._id == item.value);
-      let cartResult = totalCart -= objFromOrder[0].price;
-      totalCart==cartResult;
-      console.log(totalCart);
-      totalCartField.textContent = `${totalCart} €`;
-      /////////////////////////////////////////////////////////////////////////////
-      clientResult();
-        if(resultOrder[0] == '')
-        localStorage.clear();
-      }) 
-    });
+  const currentCart = document.getElementById('current__cart');
+  currentCart.addEventListener('click', (e) => {
+    const item = e.target;
+
+    const id = resultOrder.indexOf(item.value);
+    const removedId = resultOrder.splice(id, 1); 
+    order=resultOrder;
+    localStorage.setItem('order', order);
+
+    let objFromOrder = getCommonId(item.value);
+    let cartResult = totalCart -= objFromOrder[0].price;
+    totalCart==cartResult;
+    totalCartField.textContent = `${totalCart} €`;
+
+    if(resultOrder == '' || resultOrder[0].value == 'undefined'){
+          localStorage.clear()
+        }
+
+    const parent = item.parentElement;
+    if(item.classList[1] == 'rmv__btn'){
+      parent.remove(parent);
+    }
+  })
 }
 
 

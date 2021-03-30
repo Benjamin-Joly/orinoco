@@ -4,20 +4,14 @@ let url = 'http://localhost:3000/api/cameras';
 
 const productId = [];
 const productList = [];
-let productDescr = [];
-let productName = [];
-let productPrice = [];
-let productOpt = [];
-let productImgUrl = [];
 const orderWrap = document.getElementById('order-wrap');
 let btnProduct;
 let rmvProduct;
 
 
-const changePriceUnit = () => {
+const parsePriceUnit = () => {
   productList.forEach(el => {
     el.price === (el.price/=100);
-    console.log(el.price);
   })
 }
 
@@ -25,11 +19,6 @@ const changePriceUnit = () => {
 fetch(url).then((response) => response.json().then((data) => {
       data.forEach(element => {
         productId.push(element._id);
-        productDescr.push(element.description);
-        productName.push(element.name);
-        productPrice.push(element.price);
-        productOpt.push(element.lenses);
-        productImgUrl.push(element.imageUrl);
         productList.push(element);
       });
 }));
@@ -46,7 +35,7 @@ fetch(url).then((response) => response.json().then((data) => {
 
   loadDataFirst.then(() => {
   ////////////loadData.js//////Get data from API and after short loading time create them on the landing page HTML.
-    return changePriceUnit();   
+    return parsePriceUnit();   
 }).then(() => {
   ////////////cart.js/////////init addToCart btns
   return createNewItem();
@@ -71,28 +60,37 @@ fetch(url).then((response) => response.json().then((data) => {
 
   //////////////////Get data from API and after short loading time create them on the landing page HTML.
 const createNewItem = () => {
-  productList.forEach(item => {
-   // const objSelected = productList.filter(Object => Object._id == item);
-    const itemIndexNumber = productId.indexOf(item);
-    const newItem = document.createElement('div');
-    newItem.classList.add("product__container", `product__container--${itemIndexNumber}`);
-    newItem.innerHTML = 
-    `<img class="product__img product__img--${itemIndexNumber}" src="${item.imageUrl}" alt="${item.name}">
+  const newItem = document.createElement('div');
+  newItem.classList.add("product__container");
+  const dataMap = productList.map(x => {
+    const dataName = x.name;
+    const dataId = x._id;
+    const dataPrice = x.price;
+    const dataDescr = x.description;
+    const dataUrl = x.imageUrl;
+    return (
+      `<div class="product__wrap">
+      <img class="product__img" src="${dataUrl}" alt="${dataName}">
     <div class="product__item--type-container">
       <h3 class="product__item--heading">
-      ${item.name}
+      ${dataName}
       </h3>
       <p class="product__item--descr">
-      ${item.description}
+      ${dataDescr}
       </p>
       <p class="product__item--price">
-      ${item.price} €
+      ${dataPrice} €
       </p>
-      <button class="product__btn product__btn--${item._id}" value ="${item._id}">
+      <button class="product__btn product__btn--${dataId}" value ="${dataId}">
         <div class="cart__icon">ajouter au panier</div>
       </button>
-    </div>`;
-    orderWrap.appendChild(newItem);
+    </div>
+    </div>`
+    );
   });
-  btnProduct = Array.from(document.querySelectorAll('.product__btn'));
+    newItem.innerHTML = dataMap;
+    orderWrap.appendChild(newItem);
+    btnProduct = Array.from(document.querySelectorAll('.product__btn'));
 }
+
+
