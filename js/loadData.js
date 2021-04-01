@@ -11,7 +11,13 @@ fetch(url).then((response) => response.json().then((data) => {
   const loadDataFirst = new Promise((resolve, reject) => {
       window.addEventListener('load', () => {
         setTimeout(() => {
+         if(productList.length > 0){
           resolve()
+         }else{
+           setTimeout(() => {
+            resolve()
+           }, 100)
+         } 
         }, 100)
       });
   });
