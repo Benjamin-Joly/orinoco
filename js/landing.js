@@ -1,4 +1,4 @@
-let url = 'http://localhost:3000/api/cameras';
+let url = 'https://oc-p5-api.herokuapp.com/api/cameras';
 
 const productId = [];
 const productList = [];
