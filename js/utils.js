@@ -1,3 +1,8 @@
+let url = 'https://oc-p5-api.herokuapp.com/api/cameras';
+
+const productId = [];
+let productList ;
+
 ///////////////////////////////////////////////////////////////////GET DATA utils 
   function clientResult(){
    if(localStorage.length === 0){
@@ -11,9 +16,6 @@
     totalCartField.textContent=="0";
    }
   }
-
-  
- 
 
 ///////////////////////////////////////////////////////////////////Init. Cart functions utils
 

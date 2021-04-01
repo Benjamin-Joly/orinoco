@@ -1,7 +1,3 @@
-let url = 'https://oc-p5-api.herokuapp.com/api/cameras';
-
-const productId = [];
-const productList = [];
 const orderWrap = document.getElementById('order-wrap');
 const main = document.getElementById('main');
 let btnProduct;
