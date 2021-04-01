@@ -1,5 +1,5 @@
 const orderWrap = document.getElementById('order-wrap');
-const main = document.getElementById('main');
+const productSection = document.getElementById('product__section');
 let btnProduct;
 let rmvProduct;
 const orderResults = document.getElementById('order-results');
@@ -42,15 +42,15 @@ const parsePriceUnit = () => {
       return (
         `
         <div class="product__wrap">
-        <a class="${dataId} link__product" data-link="${dataId}" href="javascript:delay('frontend/pages/produit.html')">
+        <a class="${dataId} product__link" data-link="${dataId}" href="javascript:delay('frontend/pages/produit.html')">
         <img class="product__img" src="${dataUrl}" alt="${dataName}">
         </a>
         <div class="product__item--type-container">
-        <a class="${dataId} link__product" data-link="${dataId}" href="frontend/pages/produit.html">
-        <h3 class="link__product--item-heading">
+        <a class="${dataId} product__link" data-link="${dataId}" href="frontend/pages/produit.html">
+        <h3 class="product__link--item-heading">
         ${dataName}
         </h3>
-        <p class="link__product--item--descr">
+        <p class="product__link--item--descr">
         ${dataDescr}
         </p>
         </a>
@@ -67,7 +67,7 @@ const parsePriceUnit = () => {
     });
    
       newItem.innerHTML = dataMap.join('');
-      main.appendChild(newItem);
+      productSection.appendChild(newItem);
       btnProduct = Array.from(document.querySelectorAll('.product__btn'));
       const linkSelect = Array.from(document.querySelectorAll(".link__product"));
       console.log(linkSelect);
