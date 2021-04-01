@@ -12,7 +12,7 @@ fetch(url).then((response) => response.json().then((data) => {
       window.addEventListener('load', () => {
         setTimeout(() => {
           resolve()
-        }, 10)
+        }, 100)
       });
   });
 
