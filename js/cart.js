@@ -28,7 +28,7 @@ const buildSelectedItems = () => {
           orderResults.textContent = resultOrder.length;
         });
         
-        btnProduct.forEach(btn => {
+        btnProduct.forEach(btn => { 
         btn.addEventListener('click', (e) => {
           if(resultOrder[0] == ""){
             resultOrder.splice(0, 1);
@@ -41,7 +41,7 @@ const buildSelectedItems = () => {
           selectedItem.innerHTML = `<h3 class="cart-selected__heading">${commonId[0].name}</h3>
             <p class="cart-selected__opt">${commonId[0].lenses}</p>
             <p class="cart-selected__price">${commonId[0].price} €</p>      
-            <button class="cart-selected__btn rmv__btn" value="${commonId[0]._id}">X</btn>`;
+            <button class="cart-selected__btn rmv__btn" value="${commonId[0]._id}">x</btn>`;
             selectedItemWrap.appendChild(selectedItem);
             
             clientResult(); 

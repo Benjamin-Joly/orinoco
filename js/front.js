@@ -1,8 +1,10 @@
 /////////////////////////////////////////////////*****************parallax effect */
 const cartIcon = document.getElementById('cart');
+let parallaxImg = document.querySelector('.img__parallax');
 
-    window.addEventListener('scroll', (e) => {
-        const parallaxImg = document.querySelector('.img__parallax');
+
+
+    window.addEventListener('scroll', (e) => {   
         let scrolled = window.pageYOffset;
         let parallaxRate = (scrolled)*.6; 
         parallaxImg.style.bottom = `${parallaxRate}px`;
@@ -11,8 +13,8 @@ const cartIcon = document.getElementById('cart');
         let scrollTop = parallaxImg.getBoundingClientRect().top;
         if(window.innerWidth > 860){
             parallaxImg.style.transform = `translateY(30%) rotate3d(1, .5, .5,${rotateRate}deg)`;
-        }else if(window.innerWidth <= 860){
-            `translateY(0%) rotate3d(1, .5, .5,${rotateRate}deg)`;
+        }else if(window.innerWidth <= 860 && window.innerWidth>600){
+            parallaxImg.style.transform = `translateY(0%) rotate3d(1, .5, .5,${rotateRate}deg)`;
         }
     });
 
