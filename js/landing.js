@@ -3,7 +3,10 @@ const productSection = document.getElementById('product__section');
 let btnProduct;
 let rmvProduct;
 const orderResults = document.getElementById('order-results');
+const orderResultsWrap = document.querySelector('.order-results__wrap');
+console.log(orderResultsWrap);
 const rmvCart = document.getElementById('remove-cart');
+console.log(rmvCart);
 let filterIndex = [];
 let resultOrder = [];
 let rmvBtn = [];
@@ -46,11 +49,11 @@ const parsePriceUnit = () => {
         <img class="product__img" src="${dataUrl}" alt="${dataName}">
         </a>
         <div class="product__item--type-container">
-        <a class="${dataId} product__link" data-link="${dataId}" href="frontend/pages/produit.html">
-        <h3 class="product__link--item-heading">
+        <a class="${dataId} product__link--type" data-link="${dataId}" href="frontend/pages/produit.html">
+        <h3 class="product__item--heading">
         ${dataName}
         </h3>
-        <p class="product__link--item--descr">
+        <p class="product__item--descr">
         ${dataDescr}
         </p>
         </a>
@@ -70,7 +73,6 @@ const parsePriceUnit = () => {
       productSection.appendChild(newItem);
       btnProduct = Array.from(document.querySelectorAll('.product__btn'));
       const linkSelect = Array.from(document.querySelectorAll(".link__product"));
-      console.log(linkSelect);
       linkSelect.forEach(el => {
           el.addEventListener('click', (e) => {
             delay();

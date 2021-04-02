@@ -7,6 +7,8 @@ let productList ;
   function clientResult(){
    if(localStorage.length === 0){
        totalCartField.textContent=="0";
+       orderResults.style.display = "none";
+      orderResultsWrap.style.display = "none";
    }else if(localStorage.getItem('order') == null){
     totalCartField.textContent=="0";
    }else if(localStorage.length > 0){
@@ -15,6 +17,10 @@ let productList ;
     }else{
     totalCartField.textContent=="0";
    }
+   if(resultOrder[0] == ""){
+    resultOrder.splice(0, 1);
+  }
+  return resultOrder;
   }
 
 ///////////////////////////////////////////////////////////////////Init. Cart functions utils
