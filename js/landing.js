@@ -2,6 +2,7 @@ const orderWrap = document.getElementById('order-wrap');
 const productSection = document.getElementById('product__section');
 let btnProduct;
 let rmvProduct;
+const validOrder = document.getElementById('valid-order');
 const orderResults = document.getElementById('order-results');
 const orderResultsWrap = document.querySelector('.order-results__wrap');
 console.log(orderResultsWrap);
@@ -60,7 +61,7 @@ const parsePriceUnit = () => {
         <p class="product__item--price">
         ${dataPrice} €
         </p>
-        <button class="product__btn product__btn--${dataId}" value ="${dataId}">
+        <button class="product__btn product__btn--${dataId} cta--white" value ="${dataId}">
           <div class="cart__icon">ajouter au panier</div>
         </button>
       </div>

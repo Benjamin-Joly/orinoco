@@ -29,5 +29,8 @@ fetch(url).then((response) => {
     }).then(() => {
       ////////////cart.js/////////update cart value in €
       return sumFromOrder();
+    }).then(() => {
+      ////////////cart.js/////////update cart value in €
+      return activeValidBtn();
     })
 });

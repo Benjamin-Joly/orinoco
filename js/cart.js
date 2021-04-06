@@ -6,6 +6,7 @@ const cartBtnBhvr = () => {
       console.log(resultOrder);
       localStorage.setItem('order', resultOrder);
       clientResult(); 
+      activeValidBtn();
     }) 
   });
 }
@@ -14,7 +15,8 @@ const getCommonId = (i) => {
 }
 ////////////////////////////////////////////////cart add order items onload and onclick
 const buildSelectedItems = () => {
-  if(resultOrder.length >= 0){  
+  if(resultOrder.length >= 0){
+    activeValidBtn(); 
     resultOrder.forEach(el => {
       console.log(el);
       let commonId = getCommonId(el);
@@ -78,6 +80,7 @@ const supprBuiltItems = () => {
     if(resultOrder == '' || resultOrder[0].value == 'undefined'){
       orderResults.style.display = "none";
       orderResultsWrap.style.display = "none";
+      validOrder.classList.add('inactive');
           localStorage.clear()
         }
 

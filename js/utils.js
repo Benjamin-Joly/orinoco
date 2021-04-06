@@ -3,6 +3,13 @@ let url = 'https://oc-p5-api.herokuapp.com/api/cameras';
 const productId = [];
 let productList ;
 
+
+const activeValidBtn = () => {
+  if(resultOrder.length>0){
+    return validOrder.classList.remove('inactive'); 
+  }
+}
+
 ///////////////////////////////////////////////////////////////////GET DATA utils 
   function clientResult(){
    if(localStorage.length === 0){
