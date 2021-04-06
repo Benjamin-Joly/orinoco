@@ -4,7 +4,7 @@ let parallaxImg = document.querySelector('.img__parallax');
 
 
 
-    window.addEventListener('scroll', (e) => {   
+    window.addEventListener('wheel', (e) => {   
         let scrolled = window.pageYOffset;
         let parallaxRate = (scrolled)*.6; 
         parallaxImg.style.bottom = `${parallaxRate}px`;
