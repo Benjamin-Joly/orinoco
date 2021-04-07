@@ -7,6 +7,7 @@ const cartBtnBhvr = () => {
       localStorage.setItem('order', resultOrder);
       clientResult(); 
       activeValidBtn();
+      cartAnimLaunch();
     }) 
   });
 }

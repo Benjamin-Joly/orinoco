@@ -2,13 +2,13 @@
 ////////////////////////////////contact API get and save DATA on separated arrays
 
 fetch(url).then((response) => {
-  response.json()
+  if(response.ok){
+    response.json()
     .then((data) => {
       console.log(data);
       productList = data;
       console.log(productList);
-    })
-    .then(() => {
+    }).then(() => {
       ////////////loadData.js//////Get data from API and after short loading time create them on the landing page HTML.
         return parsePriceUnit();   
     }).then(() => {
@@ -32,5 +32,10 @@ fetch(url).then((response) => {
     }).then(() => {
       ////////////cart.js/////////update cart value in €
       return activeValidBtn();
+    }).then(() => {
+      return alertHeading.textContent="Retrouvez nos modèles de collections entièrement personalisables";
     })
+  }else{
+    alertHeading.textContent="Le serveur rencontre actuellement un problème nous faisons notre maximum pour réduire votre attente ;)";
+  } 
 });

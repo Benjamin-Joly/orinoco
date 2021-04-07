@@ -1,5 +1,5 @@
 let url = 'https://oc-p5-api.herokuapp.com/api/cameras';
-
+let urlLocal = 'http://localhost:3000/api/cameras';
 const productId = [];
 let productList ;
 
@@ -9,6 +9,7 @@ const activeValidBtn = () => {
     return validOrder.classList.remove('inactive'); 
   }
 }
+
 
 ///////////////////////////////////////////////////////////////////GET DATA utils 
   function clientResult(){

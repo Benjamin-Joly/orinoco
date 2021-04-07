@@ -2,6 +2,7 @@ const orderWrap = document.getElementById('order-wrap');
 const productSection = document.getElementById('product__section');
 let btnProduct;
 let rmvProduct;
+const alertHeading = document.getElementById('alert-heading');
 const validOrder = document.getElementById('valid-order');
 const orderResults = document.getElementById('order-results');
 const orderResultsWrap = document.querySelector('.order-results__wrap');
@@ -47,7 +48,7 @@ const parsePriceUnit = () => {
         `
         <div class="product__wrap">
         <a class="${dataId} product__link" data-link="${dataId}" href="javascript:delay('frontend/pages/produit.html')">
-        <img class="product__img" src="${dataUrl}" alt="${dataName}">
+        <img id="img__${dataId}" class="product__img" src="${dataUrl}" alt="${dataName}">
         </a>
         <div class="product__item--type-container">
         <a class="${dataId} product__link--type" data-link="${dataId}" href="frontend/pages/produit.html">

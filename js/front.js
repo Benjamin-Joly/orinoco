@@ -36,3 +36,15 @@ let parallaxImg = document.querySelector('.img__parallax');
     cartIcon.addEventListener('click', () => {
         orderWrap.classList.toggle('cart__wrap--open');
     })
+
+    const cartAnimLaunch = () => {
+        orderResultsWrap.classList.add('cart__animation--launch');
+        setTimeout(() => {
+            orderResultsWrap.classList.remove('cart__animation--launch');
+        }, 1100)
+      }
+
+
+alertHeading.addEventListener('click', () => {
+    alertHeading.style.display = "none";
+})
