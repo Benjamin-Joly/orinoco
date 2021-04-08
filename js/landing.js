@@ -13,13 +13,14 @@
       const dataPrice = x.price;
       const dataDescr = x.description;
       const dataUrl = x.imageUrl;
+      const dataOpt = x.lenses;
       return (
         `
-        <div class="product__wrap">
+    <div class="product__wrap">
         <a class="${dataId} product__link link__select" data-link="${dataId}" href="javascript:delay('pages/produit.html')">
         <img id="img__${dataId}" class="product__img" src="${dataUrl}" alt="${dataName}">
         </a>
-        <div class="product__item--type-container">
+      <div class="product__item--type-container">
         <a class="${dataId} product__link--type link__select" data-link="${dataId}" href="pages/produit.html">
         <h3 class="product__item--heading">
         ${dataName}
@@ -35,8 +36,18 @@
           <div class="cart__icon">ajouter au panier</div>
         </button>
       </div>
+      <div class="product-form__wrap">
+       <div>
+          <label for="lense-1">${dataOpt}</label>
+          <input type="radio" id="lense-1" name="lense" value="opt-1" checked>
+        </div>
+        <div>
+        <label for="lense-2">${dataOpt}</label>
+        <input type="radio" name="lense" id="lense-2" value="opt-2">
+        </div>
       </div>
-      `
+    </div>
+  `
       );
     });
      //////////////////store the product ID in localStorage in case user click on a product so the product page can build itself from the ID.
@@ -62,7 +73,7 @@
         localStorage.setItem('order', resultOrder);
         clientResult(); 
         activeValidBtn();
-        displayCartNotif();   
+        displayCartNotif();  
         cartAnimLaunch();
       }) 
     });

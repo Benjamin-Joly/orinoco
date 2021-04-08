@@ -5,21 +5,28 @@ const oL = document.getElementById('ol');
 
 
     window.addEventListener('scroll', (e) => {   
-        let scrolled = window.pageYOffset;
-        let parallaxRate = (scrolled)*.6; 
-        let rotateRate = (scrolled)*.01; 
-        const actualTransform = parallaxImg.style.transform;
-        let scrollTop = parallaxImg.getBoundingClientRect().top;
-        if(window.innerWidth > 860){
-            parallaxImg.style.bottom = `${parallaxRate}px`;
-            parallaxImg.style.transform = `translateY(30%) rotate3d(1, .5, .5,${rotateRate}deg)`;
-        }else if(window.innerWidth <= 860 && window.innerWidth>600){
-            parallaxImg.style.bottom = `${parallaxRate}px`;
-            parallaxImg.style.transform = `translateY(0%) rotate3d(1, .5, .5,${rotateRate}deg)`;
-        }else if(window.innerWidth < 600){
-            parallaxImg.style.transform = `scale(.9) translateY(40%)`;
+        if(parallaxImg !== null){
+            return parallaxSettings();
         }
     });
+
+const parallaxSettings = () =>{
+    let scrolled = window.pageYOffset;
+    let parallaxRate = (scrolled)*.6; 
+    let rotateRate = (scrolled)*.01; 
+    const actualTransform = parallaxImg.style.transform;
+    let scrollTop = parallaxImg.getBoundingClientRect().top;
+    if(window.innerWidth > 860){
+        parallaxImg.style.bottom = `${parallaxRate}px`;
+        parallaxImg.style.transform = `translateY(30%) rotate3d(1, .5, .5,${rotateRate}deg)`;
+    }else if(window.innerWidth <= 860 && window.innerWidth>600){
+        parallaxImg.style.bottom = `${parallaxRate}px`;
+        parallaxImg.style.transform = `translateY(0%) rotate3d(1, .5, .5,${rotateRate}deg)`;
+    }else if(window.innerWidth < 600){
+        parallaxImg.style.transform = `scale(.9) translateY(40%)`;
+    }
+}
+
 /////////////////////////////////////////////////*****************heading fade */
     window.addEventListener('scroll', (e) => {
         const fadeItms = document.querySelectorAll('.fade-itm');
