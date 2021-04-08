@@ -1,40 +1,9 @@
-const orderWrap = document.getElementById('order-wrap');
-const productSection = document.getElementById('product__section');
-let btnProduct;
-let rmvProduct;
-const alertHeading = document.getElementById('alert-heading');
-const validOrder = document.getElementById('valid-order');
-const orderResults = document.getElementById('order-results');
-const orderResultsWrap = document.querySelector('.order-results__wrap');
-console.log(orderResultsWrap);
-const rmvCart = document.getElementById('remove-cart');
-console.log(rmvCart);
-let filterIndex = [];
-let resultOrder = [];
-let rmvBtn = [];
-let selectedItemWrap = document.createElement('div');
-    selectedItemWrap.id = 'current__cart';
-    selectedItemWrap.classList.add('selected-item__wrap');
-    orderWrap.appendChild(selectedItemWrap);
-let selectedItem;
-let numbOfMultiple;
-let totalCartField = document.getElementById('total-cart');
-let totalCart = 0;
 
-const parsePriceUnit = () => {
-    productList.forEach(el => {
-      el.price === (el.price/=100);
-    })
-  }
- 
- 
- //////////////////Get data from API and after short loading time create them on the landing page HTML.
+ //////////////////set a delay before loading the product page so the product.id can be saved in localStorage
   function delay(URL) {
-    setTimeout( function() { window.location = URL }, 1200 );
+    setTimeout( function() { window.location = URL }, 200 );
   }
-
-
-
+ //////////////////build the landing page articles with product img, name, descr, price and cta.
   const createNewItem = () => {
     const newItem = document.createElement('div');
     newItem.classList.add("product__container");
@@ -47,11 +16,11 @@ const parsePriceUnit = () => {
       return (
         `
         <div class="product__wrap">
-        <a class="${dataId} product__link" data-link="${dataId}" href="javascript:delay('frontend/pages/produit.html')">
+        <a class="${dataId} product__link link__select" data-link="${dataId}" href="javascript:delay('pages/produit.html')">
         <img id="img__${dataId}" class="product__img" src="${dataUrl}" alt="${dataName}">
         </a>
         <div class="product__item--type-container">
-        <a class="${dataId} product__link--type" data-link="${dataId}" href="frontend/pages/produit.html">
+        <a class="${dataId} product__link--type link__select" data-link="${dataId}" href="pages/produit.html">
         <h3 class="product__item--heading">
         ${dataName}
         </h3>
@@ -70,11 +39,11 @@ const parsePriceUnit = () => {
       `
       );
     });
-   
+     //////////////////store the product ID in localStorage in case user click on a product so the product page can build itself from the ID.
       newItem.innerHTML = dataMap.join('');
       productSection.appendChild(newItem);
       btnProduct = Array.from(document.querySelectorAll('.product__btn'));
-      const linkSelect = Array.from(document.querySelectorAll(".link__product"));
+      const linkSelect = Array.from(document.querySelectorAll(".link__select"));
       linkSelect.forEach(el => {
           el.addEventListener('click', (e) => {
             delay();
@@ -82,14 +51,22 @@ const parsePriceUnit = () => {
             console.log(trackedId);
             localStorage.setItem(['trackedLink'] , trackedId);
           })
-      })
-      /*const dataset = linkSelect.map(x => {
-        const linkIds =  x.dataset.link;
-          return console.log(linkIds);
-      });*/
-            
+      })           
   }
-
+ //////////////////add new product to cart on click, store it in localStorage and update client visibility of the order.
+  const cartBtnBhvr = () => {
+    btnProduct.forEach(item => {
+      item.addEventListener('click', (e) => {
+        resultOrder.push(item.value);
+        console.log(resultOrder);
+        localStorage.setItem('order', resultOrder);
+        clientResult(); 
+        activeValidBtn();
+        displayCartNotif();   
+        cartAnimLaunch();
+      }) 
+    });
+  }
 
 
 

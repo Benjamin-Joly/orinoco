@@ -1,0 +1,21 @@
+$light-color : white;
+$med-color : #DEDEDE;
+$call-color : #002A7D;
+$contrast-color : #001A3E;
+$shadow-color:rgba(0, 26, 62, 0.425);
+
+@keyframes jumpJump {
+    0%{transform: rotate3d(0, 1, 0, 0deg) translateY(0) scale(1, 1);}
+    50%{transform: rotate3d(0, 1, 0, 360deg) translateY(-10px) scale(1.2, .8);}
+    100%{transform: rotate3d(0, 1, 0, 0deg) translateY(0) scale(1, 1);}
+}
+
+@keyframes letterMove {
+    0%{transform: translate(-24.027px, -28px);}
+    50%{transform: translate(-24.027px, -34px);}
+    100%{transform: translate(-24.027px, -28px);}
+}
+
+.letter-moving{
+    animation: letterMove 10s ease-in-out .5s infinite;
+}

@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////*****************parallax effect */
 const cartIcon = document.getElementById('cart');
 let parallaxImg = document.querySelector('.img__parallax');
-
+const oL = document.getElementById('ol');
 
 
     window.addEventListener('scroll', (e) => {   
@@ -20,7 +20,7 @@ let parallaxImg = document.querySelector('.img__parallax');
             parallaxImg.style.transform = `scale(.9) translateY(40%)`;
         }
     });
-
+/////////////////////////////////////////////////*****************heading fade */
     window.addEventListener('scroll', (e) => {
         const fadeItms = document.querySelectorAll('.fade-itm');
         fadeItms.forEach(item => {
@@ -32,11 +32,11 @@ let parallaxImg = document.querySelector('.img__parallax');
             }
         })
     });
-
+/////////////////////////////////////////////////*****************burger-menu like behavior to display cart */
     cartIcon.addEventListener('click', () => {
         orderWrap.classList.toggle('cart__wrap--open');
     })
-
+/////////////////////////////////////////////////*****************little CSS animation on click for cart icon */
     const cartAnimLaunch = () => {
         orderResultsWrap.classList.add('cart__animation--launch');
         setTimeout(() => {
@@ -44,7 +44,19 @@ let parallaxImg = document.querySelector('.img__parallax');
         }, 1100)
       }
 
-
+/////////////////////////////////////////////////*****************close error msg in case of a pb with loading data */
 alertHeading.addEventListener('click', () => {
     alertHeading.style.display = "none";
 })
+
+/////////////////////////////////////////////////*****************test Animlogo*/
+
+/*
+const moveLogoLetters = () => {
+    let letterYvalue = -28;
+    let top = oL.getBoundingClientRect().top;
+    let topRate = top*.1;
+    oL.style.transform = `translate(-24.027px, ${letterYvalue+=topRate}px)`;
+    console.log(top);
+}
+*/

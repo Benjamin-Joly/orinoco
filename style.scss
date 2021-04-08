@@ -1,15 +1,4 @@
-$light-color : white;
-$med-color : #DEDEDE;
-$call-color : #002A7D;
-$contrast-color : #001A3E;
-$shadow-color:rgba(0, 26, 62, 0.425);
-
-@keyframes jumpJump {
-    0%{transform: rotate3d(0, 1, 0, 0deg) translateY(0) scale(1, 1);}
-    50%{transform: rotate3d(0, 1, 0, 360deg) translateY(-10px) scale(1.2, .8);}
-    100%{transform: rotate3d(0, 1, 0, 0deg) translateY(0) scale(1, 1);}
-}
-
+@import 'sass/_utils.scss';
 
 html, body{
     padding:0;
@@ -46,6 +35,9 @@ h1, h2, p{
     left:50%;
     transform: translate(-50%, -50%);
     cursor: pointer;
+        @media(max-width:400px){
+            font-size:2em;
+        }
 }
 
 #header{
@@ -65,6 +57,18 @@ h1, h2, p{
 #logo, #cart{
     margin: 0 1em 0 .5em;
 }
+
+#logo{
+    width:200px;
+    height:60px;
+}
+
+.logo{
+    &__letter{
+        transform-origin: center center;
+    }
+}
+
 
 #picto__cart{
     &--bg{
@@ -231,11 +235,11 @@ main{
     }
     &__img{
         width:100%;
-        height:400px;
+        height:100%;
         object-fit: cover;
         z-index:0;
         filter: grayscale(1) contrast(1.1);
-        clip-path: path('M 550 0 L 550 400 L 0 410 L 12.39 324.05 L 14.47 263.29 L 3.47 203.66 L 12.37 142.25 L 3.48 80.36 L 18.5 0 Z');
+        clip-path: path('M 600 0 L 600 600 L 0 600 L 12.39 324.05 L 14.47 263.29 L 3.47 203.66 L 12.37 142.25 L 3.48 80.36 L 18.5 0 Z');
             @media(max-width:600px){
                 height:100%;
                 max-height:200px;
@@ -264,6 +268,7 @@ main{
             z-index:2;
             width:100%;
             max-width: 264px;
+            height:100%;
             order:-1;
             margin:1em;
                 @media(max-width:600px){
@@ -285,6 +290,10 @@ main{
              color:$light-color;
              font-weight: 300;
              margin:auto 1em auto 0;
+             display: -webkit-box;
+                -webkit-line-clamp: 6;
+                -webkit-box-orient: vertical;  
+                overflow: hidden;
                 @media(max-width:600px){
                     font-weight:200;
                     font-size: 1em;
@@ -461,6 +470,7 @@ main{
     }
     }
     &__btn{
+        position:relative;
         all:unset;
         cursor: pointer;
         position:relative;
@@ -480,9 +490,33 @@ main{
                 right:.5em;
                 background:$contrast-color;
                 color:$med-color;
-                width:2.5em;
-                height:2.5em;
+                width:2em;
+                height:2em;
             }
+        &::after{
+            content:"";
+            position:absolute;
+            left:50%;right:50%;
+            transform: translateX(-50%) rotate(-45deg);
+            height:1.6px;
+            width:24px;
+            background: $light-color;
+                @media(min-width:860px){
+                    background:$contrast-color;   
+                }
+        }
+        &::before{
+            content:"";
+            position:absolute;
+            left:50%;right:50%;
+            transform: translateX(-50%) rotate(45deg);
+            height:1.6px;
+            width:24px;
+            background: $light-color;
+                @media(min-width:860px){
+                    background:$contrast-color;   
+                }
+        }
     }
     &__price{
         font-weight:750; 
@@ -531,12 +565,23 @@ main{
 #remove-cart{
     all:unset;
     cursor:pointer;
-    background:$contrast-color;
-    color:$light-color;
+    //background:$contrast-color;
+    //color:$light-color;
     font-weight:700;
     font-size:1.2em;
-    padding:1em;
-    margin-left:1em;
+
+}
+
+#trash__icon{
+    width:44px;
+    height:44px;
+    background:$contrast-color;
+    border-radius: 100%;
+    padding:.5em;
+        @media(max-width:860px){
+            width:36px;
+            height:36px;
+        }
 }
 
 #total-cart{
@@ -550,6 +595,23 @@ main{
             margin-right:.8em;
         } 
 }
+
+
+////////////////////////////////////////SVG illustrator path classes
+.cls-1, .cls-2 {
+    fill: none;
+    stroke: $light-color;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .cls-1 {
+    stroke-width: 1.6px;
+  }
+
+  .cls-2 {
+    stroke-width: 1.33px;
+  }
 
 #form{
     display:flex;

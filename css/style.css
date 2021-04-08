@@ -28,6 +28,41 @@
   }
 }
 
+@-webkit-keyframes letterMove {
+  0% {
+    -webkit-transform: translate(-24.027px, -28px);
+            transform: translate(-24.027px, -28px);
+  }
+  50% {
+    -webkit-transform: translate(-24.027px, -34px);
+            transform: translate(-24.027px, -34px);
+  }
+  100% {
+    -webkit-transform: translate(-24.027px, -28px);
+            transform: translate(-24.027px, -28px);
+  }
+}
+
+@keyframes letterMove {
+  0% {
+    -webkit-transform: translate(-24.027px, -28px);
+            transform: translate(-24.027px, -28px);
+  }
+  50% {
+    -webkit-transform: translate(-24.027px, -34px);
+            transform: translate(-24.027px, -34px);
+  }
+  100% {
+    -webkit-transform: translate(-24.027px, -28px);
+            transform: translate(-24.027px, -28px);
+  }
+}
+
+.letter-moving {
+  -webkit-animation: letterMove 10s ease-in-out .5s infinite;
+          animation: letterMove 10s ease-in-out .5s infinite;
+}
+
 html, body {
   padding: 0;
   margin: 0;
@@ -66,6 +101,12 @@ h1, h2, p {
   cursor: pointer;
 }
 
+@media (max-width: 400px) {
+  #alert-heading {
+    font-size: 2em;
+  }
+}
+
 #header {
   z-index: 999;
   position: fixed;
@@ -91,6 +132,16 @@ h1, h2, p {
 
 #logo, #cart {
   margin: 0 1em 0 .5em;
+}
+
+#logo {
+  width: 200px;
+  height: 60px;
+}
+
+.logo__letter {
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
 }
 
 #picto__cart--bg {
@@ -358,14 +409,14 @@ main {
 
 .product__img {
   width: 100%;
-  height: 400px;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   z-index: 0;
   -webkit-filter: grayscale(1) contrast(1.1);
           filter: grayscale(1) contrast(1.1);
-  -webkit-clip-path: path("M 550 0 L 550 400 L 0 410 L 12.39 324.05 L 14.47 263.29 L 3.47 203.66 L 12.37 142.25 L 3.48 80.36 L 18.5 0 Z");
-          clip-path: path("M 550 0 L 550 400 L 0 410 L 12.39 324.05 L 14.47 263.29 L 3.47 203.66 L 12.37 142.25 L 3.48 80.36 L 18.5 0 Z");
+  -webkit-clip-path: path("M 600 0 L 600 600 L 0 600 L 12.39 324.05 L 14.47 263.29 L 3.47 203.66 L 12.37 142.25 L 3.48 80.36 L 18.5 0 Z");
+          clip-path: path("M 600 0 L 600 600 L 0 600 L 12.39 324.05 L 14.47 263.29 L 3.47 203.66 L 12.37 142.25 L 3.48 80.36 L 18.5 0 Z");
 }
 
 @media (max-width: 600px) {
@@ -427,6 +478,7 @@ main {
   z-index: 2;
   width: 100%;
   max-width: 264px;
+  height: 100%;
   -webkit-box-ordinal-group: 0;
       -ms-flex-order: -1;
           order: -1;
@@ -460,6 +512,10 @@ main {
   color: white;
   font-weight: 300;
   margin: auto 1em auto 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 @media (max-width: 600px) {
@@ -718,6 +774,7 @@ main {
 }
 
 .cart-selected__btn {
+  position: relative;
   all: unset;
   cursor: pointer;
   position: relative;
@@ -741,8 +798,44 @@ main {
     right: .5em;
     background: #001A3E;
     color: #DEDEDE;
-    width: 2.5em;
-    height: 2.5em;
+    width: 2em;
+    height: 2em;
+  }
+}
+
+.cart-selected__btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  -webkit-transform: translateX(-50%) rotate(-45deg);
+          transform: translateX(-50%) rotate(-45deg);
+  height: 1.6px;
+  width: 24px;
+  background: white;
+}
+
+@media (min-width: 860px) {
+  .cart-selected__btn::after {
+    background: #001A3E;
+  }
+}
+
+.cart-selected__btn::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  -webkit-transform: translateX(-50%) rotate(45deg);
+          transform: translateX(-50%) rotate(45deg);
+  height: 1.6px;
+  width: 24px;
+  background: white;
+}
+
+@media (min-width: 860px) {
+  .cart-selected__btn::before {
+    background: #001A3E;
   }
 }
 
@@ -812,12 +905,23 @@ main {
 #remove-cart {
   all: unset;
   cursor: pointer;
-  background: #001A3E;
-  color: white;
   font-weight: 700;
   font-size: 1.2em;
-  padding: 1em;
-  margin-left: 1em;
+}
+
+#trash__icon {
+  width: 44px;
+  height: 44px;
+  background: #001A3E;
+  border-radius: 100%;
+  padding: .5em;
+}
+
+@media (max-width: 860px) {
+  #trash__icon {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 #total-cart {
@@ -833,6 +937,21 @@ main {
     font-weight: 700;
     margin-right: .8em;
   }
+}
+
+.cls-1, .cls-2 {
+  fill: none;
+  stroke: white;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cls-1 {
+  stroke-width: 1.6px;
+}
+
+.cls-2 {
+  stroke-width: 1.33px;
 }
 
 #form {
