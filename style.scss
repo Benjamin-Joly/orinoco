@@ -275,6 +275,10 @@ main{
                     order:unset;
                 }
         }
+        &--btn{
+            border:none;
+            width:100%;
+        }
         &--heading{
             color: $light-color;
             font-weight:700;
@@ -313,11 +317,31 @@ main{
     &__icon{
         margin:center;
     }
-    &__btn{
+    &__cta{
         all:unset;
+        display:flex;
+        align-items:center;
+        justify-content: center;
         justify-self: flex-end;
         text-align: center;
         cursor:pointer;
+        position:absolute;
+        right:.5em;
+        bottom:.5em;
+        z-index:3;
+        border-radius:100%;
+        width:50px;
+        height:50px;
+            @media(max-width:860px){
+                right:.5em;
+                top:.5em;
+                width:36px;
+                height:36px;
+            }
+        &--icon{
+            width:50px;
+            height:50px;
+        }
     }
 }
 
@@ -682,7 +706,7 @@ main{
             padding: .6em;
             @media(max-width:860px){
             font-size: 1em;
-            font-weight: 500;
+            font-weight: 700;
             }
         }  
 }
@@ -707,34 +731,39 @@ main{
 .product-p{
     &__hero{
         grid-column:1/13;
-        grid-row: 100%;
+        grid-row: 1/7;
         width:100%;
     }
     &__heading-wrap{
         align-self: center;
-        grid-column: 3/7;
-        grid-row: 4/8;
+        grid-column: 3/9;
+        grid-row: 2/4;
     }
     &__img{
         filter: grayscale(1) contrast(1.1);
         width:100%;
-        max-width:1000px;
+        height:100%;
+        max-height:420px;
+        //clip-path: path('M 800 0 L 800 800 L 0 800 L 12.39 324.05 L 14.47 263.29 L 3.47 203.66 L 12.37 142.25 L 3.48 80.36 L 18.5 0 Z');
+    }
+    &__form{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        margin:1.2em 0 3em 0;
+    }
+    &__wrap{
+        grid-column: 5/12;
+        grid-row:4/7;
     }
     &__low-heading{
-        text-align:center;
+        font-size:2em;
+        font-weight:600;
     }
 }
 #product-p__hero{
-    height:50vh;
+    height:100%;
 }
-
-#product-page__section{
-        grid-column: 1/13;
-        display:flex;
-        flex-direction: column;
-        align-items: flex-end;
-}
-
 .opt{
     &__form{
         background:$med-color;

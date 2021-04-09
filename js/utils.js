@@ -33,8 +33,9 @@ let totalCart = 0;
 const parsePriceUnit = () => {
   productList.forEach(el => {
     el.price === (el.price/=100);
-  })
+  });
 }
+
 /////////////////////////////////////////////////*****************activate (or not) the order validation btn */
 const activeValidBtn = () => {
   if(resultOrder.length>0){
@@ -73,3 +74,7 @@ const sumFromOrder = () => {
     })
       totalCartField.textContent = `${totalCart} €`;
   }
+
+
+
+ 

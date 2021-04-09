@@ -1,7 +1,7 @@
 
 ////////////////////////////////contact API get and save DATA on separated arrays
 
-fetch(urlTeddies).then((response) => {
+fetch(url).then((response) => {
   if(response.ok){
     response.json()
     .then((data) => {
@@ -45,3 +45,5 @@ fetch(urlTeddies).then((response) => {
     alertHeading.textContent="Le serveur rencontre actuellement un problème nous faisons notre maximum pour réduire votre attente ;)";
   } 
 });
+
+btnProduct = Array.from(document.querySelectorAll('.product__btn'));

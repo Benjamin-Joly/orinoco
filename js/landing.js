@@ -32,19 +32,21 @@
         <p class="product__item--price">
         ${dataPrice} €
         </p>
-        <button class="product__btn product__btn--${dataId} cta--white" value ="${dataId}">
-          <div class="cart__icon">ajouter au panier</div>
+        <button class="product__btn product__btn--${dataId} cta product__cta" value ="${dataId}">
+            <svg id="picto__cart" class="product__cta--icon" xmlns="http://www.w3.org/2000/svg" width="50" height="51" viewBox="0 0 50 51">
+              <g id="cart" transform="translate(8.395 14.307)">
+                <path id="line" d="M1321.733,48.628h-13.978a3.581,3.581,0,0,1-3.519-2.958l-2.346-13.7a2.946,2.946,0,0,0-2.932-2.465H1297.1" transform="translate(-1297.1 -29.5)" fill="none" stroke="#dedede" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.337"/>
+                <path id="cart-2" data-name="cart" d="M1302.2,33.1h24.046a.727.727,0,0,1,.684.986l-2.346,7.592a3.788,3.788,0,0,1-3.617,2.662h-16.812Z" transform="translate(-1297.215 -29.551)" fill="#dedede"/>
+                <ellipse id="wheel2" cx="1.955" cy="1.972" rx="1.955" ry="1.972" transform="translate(7.918 20.804)" fill="#dedede"/>
+                <ellipse id="wheel" cx="1.955" cy="1.972" rx="1.955" ry="1.972" transform="translate(20.723 20.804)" fill="#dedede"/>
+              </g>
+            </svg>
         </button>
-      </div>
-      <div class="product-form__wrap">
-       <div>
-          <label for="lense-1">${dataOpt}</label>
-          <input type="radio" id="lense-1" name="lense" value="opt-1" checked>
-        </div>
-        <div>
-        <label for="lense-2">${dataOpt}</label>
-        <input type="radio" name="lense" id="lense-2" value="opt-2">
-        </div>
+        <a class="${dataId} product__link--type link__select" data-link="${dataId}" href="pages/produit.html">
+          <button class="cta--white product__item--btn" value ="${dataId}">
+            En savoir +
+          </button>
+        </a>
       </div>
     </div>
   `
@@ -69,7 +71,6 @@
     btnProduct.forEach(item => {
       item.addEventListener('click', (e) => {
         resultOrder.push(item.value);
-        console.log(resultOrder);
         localStorage.setItem('order', resultOrder);
         clientResult(); 
         activeValidBtn();

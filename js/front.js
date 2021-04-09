@@ -67,3 +67,5 @@ const moveLogoLetters = () => {
     console.log(top);
 }
 */
+
+////////////////////////////test move clip-path

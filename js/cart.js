@@ -14,6 +14,23 @@ const displayCartNotif = () => {
   } 
 }
 
+
+const buildSelectedProduct = (value) => {
+  selectedItem = document.createElement('div');
+selectedItem.classList.add('selected-item', `selected-item__${value._id}`);
+selectedItem.innerHTML = `<h3 class="cart-selected__heading">${value.name}</h3>
+  <p class="cart-selected__opt">${value.lenses}</p>
+  <p class="cart-selected__price">${value.price} €</p>      
+  <button class="cart-selected__btn rmv__btn" value="${value._id}"></btn>`;
+  selectedItemWrap.appendChild(selectedItem);
+  clientResult(); 
+  console.log(resultOrder);
+  let cartResult = totalCart += value.price;
+  totalCart==cartResult;
+  totalCartField.textContent = `${totalCart} €`;
+  orderResults.textContent = resultOrder.length;
+}
+
 ////////////////////////////////////////////////cart add order items onload and onclick
 const buildSelectedItems = () => {
   if(resultOrder.length >= 0){
@@ -37,20 +54,23 @@ const buildSelectedItems = () => {
               if(resultOrder[0] == ""){
                 resultOrder.splice(0, 1);
               }
-              let commonId = getCommonId(btn.value);
+              let commonIdFiltered = getCommonId(btn.value);
+              let commonId = commonIdFiltered[0];
+
+              buildSelectedProduct(commonId);
+              /*
               selectedItem = document.createElement('div');
-              selectedItem.classList.add('selected-item', `selected-item__${commonId[0]._id}`);
-              selectedItem.innerHTML = `<h3 class="cart-selected__heading">${commonId[0].name}</h3>
-                <p class="cart-selected__opt">${commonId[0].lenses}</p>
-                <p class="cart-selected__price">${commonId[0].price} €</p>      
-                <button class="cart-selected__btn rmv__btn" value="${commonId[0]._id}"></btn>`;
+              selectedItem.classList.add('selected-item', `selected-item__${commonId._id}`);
+              selectedItem.innerHTML = `<h3 class="cart-selected__heading">${commonId.name}</h3>
+                <p class="cart-selected__opt">${commonId.lenses}</p>
+                <p class="cart-selected__price">${commonId.price} €</p>      
+                <button class="cart-selected__btn rmv__btn" value="${commonId._id}"></btn>`;
                 selectedItemWrap.appendChild(selectedItem);
-                
                 clientResult(); 
-                let cartResult = totalCart += commonId[0].price;
+                let cartResult = totalCart += commonId.price;
                 totalCart==cartResult;
                 totalCartField.textContent = `${totalCart} €`;
-                orderResults.textContent = resultOrder.length;
+                orderResults.textContent = resultOrder.length;*/
             })
           })
         }
@@ -83,7 +103,7 @@ const supprBuiltItems = () => {
       orderResults.style.display = "none";
       orderResultsWrap.style.display = "none";
       validOrder.classList.add('inactive');
-          localStorage.clear()
+          localStorage.removeItem('order');
         }
 
     const parent = item.parentElement;
@@ -94,6 +114,6 @@ const supprBuiltItems = () => {
 }
 //////////////////////////////////////////////////////////remove the whole order, clear everything in localStorage, abort mission, reload page, forget it all and start a new life.
   rmvCart.addEventListener('click', () => {
-    localStorage.clear();
+    localStorage.removeItem('order');
     document.location.reload();
 });
