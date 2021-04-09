@@ -56,21 +56,7 @@ const buildSelectedItems = () => {
               }
               let commonIdFiltered = getCommonId(btn.value);
               let commonId = commonIdFiltered[0];
-
               buildSelectedProduct(commonId);
-              /*
-              selectedItem = document.createElement('div');
-              selectedItem.classList.add('selected-item', `selected-item__${commonId._id}`);
-              selectedItem.innerHTML = `<h3 class="cart-selected__heading">${commonId.name}</h3>
-                <p class="cart-selected__opt">${commonId.lenses}</p>
-                <p class="cart-selected__price">${commonId.price} €</p>      
-                <button class="cart-selected__btn rmv__btn" value="${commonId._id}"></btn>`;
-                selectedItemWrap.appendChild(selectedItem);
-                clientResult(); 
-                let cartResult = totalCart += commonId.price;
-                totalCart==cartResult;
-                totalCartField.textContent = `${totalCart} €`;
-                orderResults.textContent = resultOrder.length;*/
             })
           })
         }

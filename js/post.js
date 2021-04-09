@@ -35,11 +35,10 @@ btn.addEventListener('click', (e) => {
     redirect: 'follow'
   };
   
-  fetch("http://localhost:3000/api/cameras/order", requestOptions)
+  fetch("https://oc-p5-api.herokuapp.com/api/cameras/order", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
 
   let resultArea = document.getElementById('result-text');
-  resultArea.textContent = `Te llamas ${firstName} ${lastName}, te podemos encontrar a ${address} en la ciudad de ${city}. Te escribiremos a esta direccion ${email}, asi que ojos sobre tu puta bandeja de entrada cabron`;
 });

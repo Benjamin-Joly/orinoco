@@ -42,6 +42,7 @@
               </g>
             </svg>
         </button>
+        <div class="product__opt"></div>
         <a class="${dataId} product__link--type link__select" data-link="${dataId}" href="pages/produit.html">
           <button class="cta--white product__item--btn" value ="${dataId}">
             En savoir +

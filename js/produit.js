@@ -57,6 +57,7 @@ const buildOptionForm = () => {
         buildSelectedProduct(productPageObj);
         displayCartNotif(); 
         cartAnimLaunch();
+        activeValidBtn();
     })
     const buildInputs = () => {
         lenses.forEach(el => {

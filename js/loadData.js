@@ -37,6 +37,11 @@ fetch(url).then((response) => {
       ////////////cart.js/////////activate validation if there is any product ordered
       return activeValidBtn();
     }).then(() => {
+      ////////////cart.js/////////activate validation if there is any product ordered
+      if(typeof(buildSummaryFromOrder)!== "undefined"){
+        return buildSummaryFromOrder();
+      }
+    }).then(() => {
       ////////////////////////////if data is correctly loaded
       return alertHeading.style.display = 'none';
     })
@@ -45,5 +50,3 @@ fetch(url).then((response) => {
     alertHeading.textContent="Le serveur rencontre actuellement un problème nous faisons notre maximum pour réduire votre attente ;)";
   } 
 });
-
-btnProduct = Array.from(document.querySelectorAll('.product__btn'));
