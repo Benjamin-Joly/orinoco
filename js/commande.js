@@ -18,6 +18,7 @@ const buildSummaryItems = (element) => {
     summaryItemWrap.innerHTML = `
         <h3 class="summary-item__heading">${element.name}</h3>
         <p class="summary-item__opt">${element.lenses}</p>
+        <p class="summary-item__price">${element.price} €</p>
         <button class="cart-selected__btn rmv__btn" value="${element._id}"></btn>
     `;
     orderSummaryWrap.appendChild(summaryItemWrap);

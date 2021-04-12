@@ -19,3 +19,16 @@ $shadow-color:rgba(0, 26, 62, 0.425);
 .letter-moving{
     animation: letterMove 10s ease-in-out .5s infinite;
 }
+
+@mixin item-box__settings {
+    position:relative;
+    box-shadow: 2px 3px 7px rgba(17, 6, 41, 0.425);
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+    max-width:500px;
+    background:$light-color;
+    border-radius: 8px;
+    padding:1em;
+}

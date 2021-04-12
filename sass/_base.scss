@@ -1,0 +1,24 @@
+html, body{
+    padding:0;
+    margin:0;
+    font-family: 'Sora', sans-serif;
+}
+
+body{
+    width:100%;
+    height:100%;
+    background-color: $light-color;
+    background-image:  radial-gradient(lighten($call-color, 60%) 1.25px, transparent 1.25px), radial-gradient(lighten($call-color, 60%) 1.25px, $light-color 1.25px);
+    background-size: 50px 50px;
+    background-position: 0 0,25px 25px;
+    background-attachment: fixed;
+}
+
+a{
+    text-decoration: none;
+    color:$contrast-color;
+}
+
+h1, h2, p{
+    color:$contrast-color;
+}

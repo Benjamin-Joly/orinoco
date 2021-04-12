@@ -58,7 +58,7 @@ const activeValidBtn = () => {
     }else{
     totalCartField.textContent=="0";
    }
-   if(resultOrder[0] == ""){
+   if(resultOrder[0] === ""){
     resultOrder.splice(0, 1);
   }
   return resultOrder;
@@ -70,7 +70,7 @@ const sumFromOrder = () => {
     resultOrder.forEach(element => {
       let objFromOrder = getCommonId(element);
       let cartResult = totalCart += objFromOrder[0].price;
-      totalCart==cartResult;
+      totalCart===cartResult;
     })
       totalCartField.textContent = `${totalCart} €`;
   }
