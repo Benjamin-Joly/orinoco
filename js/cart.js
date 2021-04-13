@@ -72,7 +72,6 @@ const supprBuiltItems = () => {
       resultOrder.splice(0, 1);
     }
     const item = e.target;
-
     const id = resultOrder.indexOf(item.value);
     const removedId = resultOrder.splice(id, 1); 
     //order=resultOrder;
@@ -95,6 +94,9 @@ const supprBuiltItems = () => {
     const parent = item.parentElement;
     if(item.classList[1] == 'rmv__btn'){
       parent.remove(parent);
+    }
+    if(typeof(removeSummaryItem) !== "undefined"){
+      removeSummaryItem();
     }
   })
 }

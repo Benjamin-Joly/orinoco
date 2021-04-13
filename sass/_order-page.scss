@@ -4,6 +4,9 @@
     margin:20px;
     width:100%;
     max-width:350px;
+    @media(max-width:860px){
+        width:90%;
+    }
     & input{
         font-size: 1.5em;
         font-weight:650;
@@ -12,12 +15,20 @@
         border: solid $contrast-color 1px;
         border-radius:5em;
         padding:.2em;
+            @media(max-width:860px){
+                font-size: 1em;
+                font-weight:500;
+            }
     }
     & label{
         font-size: 1.5em;
         font-weight:650;
         color: $contrast-color;
         margin: .2em 0 .2em 0;
+            @media(max-width:860px){
+                font-size: 1.2em;
+                font-weight:550;
+            }
     }
     &__wrap{
         display:flex;
@@ -30,11 +41,12 @@
     &__btn{
         margin-top:1em;
         max-width:200px;
-        padding:.5em !important;
+        padding:1em .5em 1em .5em !important;
         background:$call-color !important;
         color:$light-color !important;
         font-weight:700 !important;
         border:none !important;
+        border-radius: 4px !important;
     }
 }
 
@@ -45,6 +57,9 @@
 .post-p__hero-wrap{
     grid-column: 3/8;
     grid-row: 3/7;
+        @media(max-width:860px){
+            grid-column:2/6;
+        }
 }
 
 #order-summary{
@@ -53,28 +68,61 @@
         grid-column: 3/12;
         align-self:center;
         height:100%;
+        @media(max-width:860px){
+            grid-column:1/4;
+            flex-direction: column;
+        }
 }
 
 .order-summary__wrap{
     width:100%;
     max-width:500px;
+    @media(max-width:860px){
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+        margin-top:4em;
+    }
 }
 
 .summary-item{
     &__wrap{
         @include item-box__settings;
         margin: 2.5em 0 2.5em 0;
+        @media(max-width:860px){
+            padding:0;
+            margin: 1em 0 1em 0;
+            width:90%;
+        }
     }
     &__opt{
-        width:150px;
+        width:100px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        @media(max-width:860px){
+            font-size:.8em;
+            width:80px
+            //display:none;
+        }
     }
     &__price{
-        position:absolute;
-        right:1em;
+        margin-right:1em;
         font-weight:600;
         text-align: right;
+            @media(max-width:860px){
+                position:unset;
+            }
+    }
+    &__heading{
+        @media(max-width:860px){
+            margin-left:1em;
+        }
+    }
+}
+
+.opt__btn{
+    @media(max-width:860px){
+        margin-top:1.2em;
     }
 }

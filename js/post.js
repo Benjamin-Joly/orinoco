@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////*****************Write the Data in the right format and POST a contact form with the order */
-const btn = document.getElementById('btn');
+const postFormBtn = document.querySelector('.post-form__btn');
 
-btn.addEventListener('click', (e) => {
+postFormBtn.addEventListener('click', (e) => {
   e.preventDefault();
   //////////////////////////////////////////////////////////////////get the input values
   const firstName = document.getElementById('first-name').value;

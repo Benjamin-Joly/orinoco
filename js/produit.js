@@ -32,7 +32,7 @@ fetch(urlProductPage).then((response) => response.json().then((data) => {
     //////////////////////////////////////set new document name from ID.name
     return buildProductPage();
 })
-);
+); 
 
 const productBtnBhvr = () => {
     resultOrder.push(submitBtn.value);
@@ -64,8 +64,11 @@ const buildOptionForm = () => {
            inputWrap = document.createElement('div');
            inputWrap.classList.add('product-p-input__wrap');
            inputWrap.innerHTML = `
-            <label for="lense-${lenses.indexOf(el)}">${lenses[lenses.indexOf(el)]}</label>
-            <input type="radio" id="lense-${lenses.indexOf(el)}" name="lense" value="${lenses[lenses.indexOf(el)]}" checked>
+           <input type="radio" id="lense-${lenses.indexOf(el)}" name="lense" value="${lenses[lenses.indexOf(el)]}" checked>
+            <label for="lense-${lenses.indexOf(el)}" class="check__label">
+                <div class="check__btn"></div>
+                <p class="check__descr">${lenses[lenses.indexOf(el)]}</p>
+            </label>
            `;
            optForm.appendChild(inputWrap);
         });
@@ -89,3 +92,6 @@ const buildProductPage = () => {
     buildOptionForm();
     productHero.appendChild(productWrap);
 }
+
+//////////////////////////////////anim radio inputs
+

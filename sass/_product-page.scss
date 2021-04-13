@@ -1,4 +1,9 @@
 .product-p{
+    &-input__wrap{
+        display:flex;
+        align-items:center;
+        position:relative;
+    }
     &__hero{
         grid-column:1/13;
         grid-row: 1/7;
@@ -73,5 +78,77 @@
     &__btn{
         border:none;
         text-align: right;
+    }
+}
+/*
+[type="radio"] {
+	opacity:0;
+    width:0;
+    position:absolute;
+}
+*/
+@keyframes btn-fill{
+    0%{transform: scale(0)}
+    100%{transform:scale(1.1)}
+}
+
+
+.check{
+    &__btn{     
+        position:relative; 
+        content:'';
+        border: solid $contrast-color 1px;
+        background:$light-color;
+        width:2em;
+        height:2em;
+        border-radius:100%;
+            &:before{
+                content:'';
+                background:$call-color;
+                position:absolute;
+                top:0;left:0;right:0;bottom:0;
+                transform: scale(0);
+                border-radius:50%;
+            }
+    }
+    &__descr{
+        position:relative;
+        z-index:3;
+        font-size: 1.2em;
+        font-weight:600;
+        margin-left:1em;
+        margin-right: .5em;
+    }
+    &__label{
+        display:flex;
+        align-items: center;
+        justify-content: space-around;
+        cursor:pointer;
+            &::before{
+                content:'';
+                position:absolute;
+                top:0;left:0;right:0;bottom:0;
+                border-radius:4px;
+                border: solid 2px $call-color;
+                opacity: 0;
+                transition:.1s ease-in-out;
+            }
+    }
+}
+
+input[type="radio"]{
+    width:0;
+    opacity:0;
+}
+
+input[type="radio"]:checked ~ label{
+    & .check__btn::before{
+        animation: 100ms ease-in-out forwards btn-fill;
+    }
+    &::before{
+        opacity: 1;
+    }
+    & .check__descr {
+        color:$call-color;
     }
 }

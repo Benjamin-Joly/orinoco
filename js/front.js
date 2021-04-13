@@ -68,4 +68,3 @@ const moveLogoLetters = () => {
 }
 */
 
-////////////////////////////test move clip-path

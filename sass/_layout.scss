@@ -30,12 +30,10 @@ main{
         }
 }
 
+
+
 .first-heading{
-    font-family: 'Sora', sans-serif;
-    font-weight:750;
-    font-size:3.5em;
-    line-height:1;
-    margin-bottom: 0;
+        @include h1-font-settings;
         @media(max-width:860px){
             font-size:8vw;
         }
@@ -51,13 +49,7 @@ main{
             }
     }
     &__descr{
-        font-size: 1.5em;
-        font-weight:150;
-        margin-top:0.2em;
-            @media(max-width:860px){
-                font-size: 1.2em;
-                font-weight: 350;
-            }
+        @include heading-descr-settings;
     }
 }
 
@@ -88,12 +80,7 @@ main{
             }
     }
     &__descr{
-        font-size: 1.2em;
-        font-weight:150;
-        margin-top:0.2em;
-        width:100%;
-        max-width:500px;
-        margin-top: .8em;
+        @include heading-descr-settings; 
     }
 }
 
@@ -102,12 +89,13 @@ main{
     cursor: pointer;
     color: $light-color;
     font-size: 1.2em;
-    font-weight: 550;
+    font-weight: 600;
     background: $call-color !important;
     padding: .6em;
+    border-radius:4px;
     @media(max-width:860px){
         font-size: 1em;
-        font-weight: 500;
+        font-weight: 600;
         }
         &--white{
             text-align: center;

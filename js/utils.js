@@ -13,7 +13,7 @@ const productSection = document.getElementById('product__section');
 let btnProduct;
 let rmvProduct;
 const alertHeading = document.getElementById('alert-heading');
-const validOrder = document.getElementById('valid-order');
+const validOrder = document.getElementById('valid-order__link');
 const orderResults = document.getElementById('order-results');
 const orderResultsWrap = document.querySelector('.order-results__wrap');
 const rmvCart = document.getElementById('remove-cart');
@@ -40,6 +40,8 @@ const parsePriceUnit = () => {
 const activeValidBtn = () => {
   if(resultOrder.length>0){
     return validOrder.classList.remove('inactive'); 
+  }else{
+    return validOrder.classList.add('inactive'); 
   }
 }
 
