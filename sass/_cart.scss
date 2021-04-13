@@ -41,14 +41,10 @@
     border-radius:100%;
     background: #FF5757;
     position:absolute;
-    top:.8em;
-    right:.8em;
+    top:-.4em;
+    right:-.2em;
     z-index:99;
-    backface-visibility: $contrast-color;
-        @media(max-width:860px){
-            top:.4em;
-            right:.4em;
-        }
+    //backface-visibility: $contrast-color;
 }
 
 .selected-item{
@@ -195,20 +191,33 @@
     //color:$light-color;
     font-weight:700;
     font-size:1.2em;
-
+    display:flex;
+    align-items:center;
+        &:hover #trash__icon--top{
+            transform: translate(-4px, -2px) rotate(-10deg);
+        }
 }
 
 #trash__icon{
-    width:44px;
-    height:44px;
+    width:52px;
+    height:auto;
     background:$contrast-color;
     border-radius: 100%;
-    padding:.5em;
+    padding:.2em;
         @media(max-width:860px){
             width:36px;
             height:36px;
         }
+        &--g{
+            fill:$med-color;
+        }
+        &--top{
+            @include transition-settings;
+        }
 }
+
+
+
 
 #total-cart{
     font-size:1.4em;
@@ -239,19 +248,19 @@
     stroke-width: 1.33px;
   }
 
+
+
   #valid-order{
     border:none;
     cursor: pointer;
     max-width:300px;
     height:100%;
     padding: 1.5em;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
         @media(max-width:860px){
             padding: 1em 1.4em 1em 1.4em;
             margin:1em;
         }
 }
 
-.inactive{
-    opacity:.5;
-    pointer-events: none;
-}

@@ -48,11 +48,28 @@
         width:100%;
         max-width:800px;
         height:100%;
-        background: rgb(3, 3, 51);
+        background: $contrast-color;
         margin-bottom: 3em;
+            &::after{
+                content:'';
+                position:absolute;
+                top:0;right:0;bottom:0;left:0;
+                background:$call-color;
+                opacity: 0;
+                transition:opacity .2s ease-in-out;
+            }
+            &:hover .product__img{
+                clip-path: path('M 600 0 L 600 600 L 0 600 L 0 324.05 L 20 263.29 L 10 203.66 L 24 142.25 L 0 80.36 L 24 0 Z');
+            }
+            &:hover::after{
+                opacity: 1;
+            }
             @media(max-width:600px){
                 flex-direction:column;
                 align-items:center;
+                    &:hover .product__img{
+                        clip-path: none;
+                    }
             }
     }
     &__img{
@@ -61,7 +78,9 @@
         object-fit: cover;
         z-index:0;
         filter: grayscale(1) contrast(1.1);
+        transition: clip-path .2s ease-in-out;
         clip-path: path('M 600 0 L 600 600 L 0 600 L 12.39 324.05 L 14.47 263.29 L 3.47 203.66 L 12.37 142.25 L 3.48 80.36 L 18.5 0 Z');
+        //clip-path: path('M 600 0 L 600 600 L 0 600 L 0 324.05 L 20 263.29 L 10 203.66 L 24 142.25 L 0 80.36 L 24 0 Z');
             @media(max-width:600px){
                 height:100%;
                 max-height:200px;
@@ -106,6 +125,8 @@
             font-size: 1.4em;
             border-bottom:solid 1px $light-color;
             padding-bottom: 1em;
+            transform-origin: left;
+            @include transition-settings;
                 @media(max-width:600px){
                     font-weight:600;
                     font-size: 1.2em;
@@ -129,6 +150,7 @@
              font-weight:800;
              font-size: 1.3em;
              text-align: right;
+             @include transition-settings;
                 @media(max-width:600px){
                     font-weight:600;
                     font-size: 1em;
@@ -154,11 +176,29 @@
         border-radius:100%;
         width:50px;
         height:50px;
+            &::after{
+                content:'';
+                position:absolute;
+                top:0;left:0;right:0;bottom:0;
+                background:$call-color;
+                border-radius: 50%;
+                z-index:-1;
+                transform: scale(0);
+            }
+            @include cart-hover-settings;
+            &:hover{
+                transform:scale(1.2);
+                @include transition-settings;
+            }
+            &:hover::after{
+                transform:scale(1.01);
+                @include transition-settings;
+            }
             @media(max-width:860px){
                 right:.5em;
                 top:.5em;
-                width:36px;
-                height:36px;
+                width: 52px;
+                height:52px;
             }
         &--icon{
             width:50px;

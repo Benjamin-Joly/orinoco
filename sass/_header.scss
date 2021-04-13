@@ -16,6 +16,26 @@
     margin: 0 1em 0 .5em;
 }
 
+#cart{
+    position:relative;
+    cursor:pointer;
+    &::after{
+        content:'';
+        position:absolute;
+        top:0;left:0;right:0;bottom:0;
+        background:$contrast-color;
+        width:50px;
+        height:50px;
+        border-radius:50%;
+        z-index:-1;
+        @include transition-settings;
+    }
+    &:hover::after{
+        transform: scale(1.1);
+    }
+    @include cart-hover-settings;
+}
+
 #logo{
     width:200px;
     height:60px;
@@ -28,7 +48,7 @@
 }
 
 
-#picto__cart{
+.picto__cart{
     &--bg{
         fill : $contrast-color;
     }
@@ -37,21 +57,19 @@
     }
     &--basket{
         fill:$med-color;
+        //transform-origin: center center;
+        //transform-box: fill-box;
+        transform: scale(1) translate(-1297.215px, -29.551px) rotate(0deg);
+        @include transition-settings;
     }
     &--wheel{
         fill:$med-color;
+        transform-origin: center center;
+        @include transition-settings;
             &2{
                 fill:$med-color;
+                transform-origin: center center;
+                @include transition-settings;
             }
-    }
-}
-
-.picto__cart{
-    opacity:1;
-    transform: rotateY(0deg); 
-    &--invert{
-    position:relative;
-    transform: rotateY(360deg); 
-    transition: all .3s ease-in-out;
     }
 }
