@@ -79,10 +79,6 @@ const activeValidBtn = () => {
   return resultOrder;
   }
 
-  window.addEventListener('pageshow', () => {
-    clientResult();
-});
-
 ///////////////////////////////////////////////////////////////////display and update cart amount
 
 const sumFromOrder = () => {

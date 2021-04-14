@@ -106,3 +106,12 @@ const supprBuiltItems = () => {
     localStorage.removeItem('order');
     document.location.reload();
 });
+
+
+const updateOnPageShow = () => {
+  window.addEventListener('pageshow', () => {
+    selectedItemWrap.innerHTML = "";
+    clientResult();
+    buildSelectedItems();
+  });
+}
