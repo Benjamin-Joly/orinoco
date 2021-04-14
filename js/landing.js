@@ -5,6 +5,7 @@
   }
  //////////////////build the landing page articles with product img, name, descr, price and cta.
   const createNewItem = () => {
+    const productSection = document.getElementById('product__section');
     const newItem = document.createElement('div');
     newItem.classList.add("product__container");
     const dataMap = productList.map(x => {
@@ -72,6 +73,7 @@
     btnProduct.forEach(item => {
       item.addEventListener('click', (e) => {
         resultOrder.push(item.value);
+        console.log(resultOrder);
         localStorage.setItem('order', resultOrder);
         clientResult(); 
         activeValidBtn();

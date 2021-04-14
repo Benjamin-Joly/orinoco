@@ -1,16 +1,64 @@
 
 ////////////////////////////////contact API get and save DATA on separated arrays
-
-fetch(url).then((response) => {
-  if(response.ok){
-    return response.json()
-  }else{
-    throw new Error('smthg wentwrong');
-  }
-}).then((data) => {
-  console.log(data);
+/*
+const saveData = (data) => {
   productList = data;
-}).then(() => {
+}
+*/
+
+async function loadData() {
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data);
+  return data;
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try{
+    productList = await loadData();
+  }catch(e){
+    console.log(e);
+  }
+  parsePriceUnit();
+  if(typeof(createNewItem) !== 'undefined'){
+    createNewItem();
+    cartBtnBhvr();
+  }
+  clientResult();
+  supprBuiltItems();
+  buildSelectedItems();
+  sumFromOrder();
+  activeValidBtn();
+
+  if(typeof(buildSummaryFromOrder)!== "undefined"){
+    return buildSummaryFromOrder();
+  }
+})
+
+
+/*
+const loadData = () => {
+  fetch(url)
+  .then((response) => {
+    if(response.ok){
+      return response.json()
+    }else{
+      throw new Error('something went wrong');
+    }
+  }).then((data) => {
+    console.log(data);
+    return saveData(data);
+  }).catch((error) => {
+    console.log(error);
+    alertHeading.textContent = "une erreur s'est produite, veuillez recharger la page.";
+    return alertHeading.style.display = 'inline';
+  });
+}
+*/
+ 
+
+/*
+.then(() => {
   ////////////loadData.js//////Get data from API and after short loading time create them on the landing page HTML.
     return parsePriceUnit();   
 }).then(() => {
@@ -43,16 +91,8 @@ fetch(url).then((response) => {
   if(typeof(buildSummaryFromOrder)!== "undefined"){
     return buildSummaryFromOrder();
   }
-}).then(() => {
-  ////////////////////////////if data is correctly loaded
-  return alertHeading.style.display = 'none';
-}).catch((error) => {
-  console.log(error);
-  alertHeading.textContent = "une erreur s'est produite, veuillez recharger la page.";
-  return alertHeading.style.display = 'inline';
-});
-
-
+})
+*/
 
 /*
 fetch(url).then((response) => {

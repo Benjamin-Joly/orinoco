@@ -9,7 +9,6 @@ let urlTeddies = 'https://ab-p5-api.herokuapp.com/api/teddies';
 
 /////////////////////////////////////////////////*****************DOM elements targeted */
 const orderWrap = document.getElementById('order-wrap');
-const productSection = document.getElementById('product__section');
 let btnProduct;
 let rmvProduct;
 const alertHeading = document.getElementById('alert-heading');
@@ -45,7 +44,7 @@ fireOnPopState(clientResult());
 /////////////////////////////////////////////////*****************parce the price value by 100 */
 const parsePriceUnit = () => {
   productList.forEach(el => {
-    el.price === (el.price/=100);
+    return el.price === (el.price/=100);
   });
 }
 
