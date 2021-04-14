@@ -111,7 +111,8 @@ const supprBuiltItems = () => {
   window.addEventListener('pageshow', () => {
     selectedItemWrap.innerHTML = "";
     clientResult();
-    if(typeof(buildSelectedItems)!== "undefined"){
+    /*
+    if(typeof(buildSelectedItems) !== "undefined"){ 
       buildSelectedItems();
-    }
+    }*/
   });
