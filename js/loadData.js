@@ -44,9 +44,6 @@ fetch(url).then((response) => {
     return buildSummaryFromOrder();
   }
 }).then(() => {
-  ////////////cart.js/////////activate validation if there is any product ordered
-  return updateOnPageShow();
-}).then(() => {
   ////////////////////////////if data is correctly loaded
   return alertHeading.style.display = 'none';
 }).catch((error) => {

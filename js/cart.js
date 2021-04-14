@@ -108,10 +108,10 @@ const supprBuiltItems = () => {
 });
 
 
-const updateOnPageShow = () => {
   window.addEventListener('pageshow', () => {
     selectedItemWrap.innerHTML = "";
     clientResult();
-    buildSelectedItems();
+    if(typeof(buildSelectedItems)!== "undefined"){
+      buildSelectedItems();
+    }
   });
-}
