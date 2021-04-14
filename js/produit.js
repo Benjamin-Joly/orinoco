@@ -45,7 +45,7 @@ fetch(urlProductPage).then((response) => response.json().then((data) => {
 
 const productBtnBhvr = () => {
     resultOrder.push(submitBtn.value);
-    localStorage.setItem('order', resultOrder);   
+    localStorage.setItem('order', resultOrder);    
 }
 
 const buildOptionForm = () => {

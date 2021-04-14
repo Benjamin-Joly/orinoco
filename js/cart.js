@@ -1,3 +1,4 @@
+
 ////////////////////////////////////////filter to get a common ID between order array and products loaded array.
 const getCommonId = (i) => {
  return (productList.filter(Object => Object._id == i));
@@ -73,16 +74,16 @@ const supprBuiltItems = () => {
     }
     const item = e.target;
     const id = resultOrder.indexOf(item.value);
-    const removedId = resultOrder.splice(id, 1); 
-    //order=resultOrder;
-    localStorage.setItem('order', resultOrder);
-    clientResult();
+    const removedId = resultOrder.splice(id, 1);
 
     let objFromOrder = getCommonId(item.value);
     let cartResult = totalCart -= objFromOrder[0].price;
     totalCart==cartResult;
     totalCartField.textContent = `${totalCart} €`;
     orderResults.textContent = resultOrder.length;
+
+    localStorage.setItem('order', resultOrder);
+    clientResult();
 
     if(resultOrder == '' || resultOrder[0].value == 'undefined' || resultOrder.length == 0){
       orderResults.style.display = "none";

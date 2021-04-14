@@ -29,6 +29,19 @@ let numbOfMultiple;
 let totalCartField = document.getElementById('total-cart');
 let totalCart = 0;
 
+/*
+const fireOnPopState = (func) => {
+  window.addEventListener('popstate', () => {
+    if(func !== "undefined"){
+      return func;
+    }else{
+      console.log('PB');
+    }
+  })
+}
+
+fireOnPopState(clientResult());
+*/
 /////////////////////////////////////////////////*****************parce the price value by 100 */
 const parsePriceUnit = () => {
   productList.forEach(el => {
@@ -49,8 +62,8 @@ const activeValidBtn = () => {
 ///////////////////////////////////////////////////////////////////update and set the client view of the order depending on what's stored in local storage <== very important
   function clientResult(){
    if(localStorage.length === 0){
-       totalCartField.textContent=="0";
-       orderResults.style.display = "none";
+      totalCartField.textContent=="0";
+      orderResults.style.display = "none";
       orderResultsWrap.style.display = "none";
    }else if(localStorage.getItem('order') == null){
     totalCartField.textContent=="0";
@@ -59,12 +72,16 @@ const activeValidBtn = () => {
     totalCartField.textContent==resultOrder.length;
     }else{
     totalCartField.textContent=="0";
-   }
+   }///////////////////////////////fix in case of 1rst array itm is empty after rmv itm
    if(resultOrder[0] === ""){
     resultOrder.splice(0, 1);
   }
   return resultOrder;
   }
+
+  window.addEventListener('popstate', () => {
+    clientResult();
+});
 
 ///////////////////////////////////////////////////////////////////display and update cart amount
 
