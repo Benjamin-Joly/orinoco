@@ -81,6 +81,8 @@ const activeValidBtn = () => {
 
   window.addEventListener('pageshow', () => {
     clientResult();
+    buildSelectedItems();
+    supprBuiltItems();
 });
 
 ///////////////////////////////////////////////////////////////////display and update cart amount
