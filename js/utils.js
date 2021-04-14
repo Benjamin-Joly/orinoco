@@ -81,6 +81,7 @@ const activeValidBtn = () => {
 
   window.addEventListener('popstate', () => {
     clientResult();
+    document.location.reload();
 });
 
 ///////////////////////////////////////////////////////////////////display and update cart amount
