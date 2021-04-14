@@ -40,8 +40,8 @@ main{
     &__wrap{
         display: flex;
         flex-direction: column;
-        grid-column: 2/8;
-        grid-row: 3/6;
+        grid-column: 3/8;
+        grid-row: 2/5;
         transition : opacity .3s ease-in-out;
             @media(max-width:860px){
                 grid-column: 2/6;
