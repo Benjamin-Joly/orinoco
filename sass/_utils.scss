@@ -30,12 +30,6 @@ $shadow-color:rgba(0, 26, 62, 0.425);
     &:hover .picto__cart--basket{
         transform: scale(1.1) translate(-1298.215px, 38px) rotate(-3deg);
     }
-    &:hover .picto__cart--wheel{
-        transform: scale(1.2) translate(21.723px, 22.804px);
-    }
-    &:hover .picto__cart--wheel2{
-        transform: scale(1.3) translate(13px, 22.804px);
-    }
 }
 
 @keyframes jumpJump {

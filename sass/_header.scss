@@ -64,12 +64,8 @@
     }
     &--wheel{
         fill:$med-color;
-        transform-origin: center center;
-        @include transition-settings;
             &2{
                 fill:$med-color;
-                transform-origin: center center;
-                @include transition-settings;
             }
     }
 }

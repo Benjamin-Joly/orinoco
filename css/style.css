@@ -153,16 +153,6 @@ h1, h2, p {
           transform: scale(1.1) translate(-1298.215px, 38px) rotate(-3deg);
 }
 
-#cart:hover .picto__cart--wheel {
-  -webkit-transform: scale(1.2) translate(21.723px, 22.804px);
-          transform: scale(1.2) translate(21.723px, 22.804px);
-}
-
-#cart:hover .picto__cart--wheel2 {
-  -webkit-transform: scale(1.3) translate(13px, 22.804px);
-          transform: scale(1.3) translate(13px, 22.804px);
-}
-
 #logo {
   width: 200px;
   height: 60px;
@@ -193,22 +183,10 @@ h1, h2, p {
 
 .picto__cart--wheel {
   fill: #DEDEDE;
-  -webkit-transform-origin: center center;
-          transform-origin: center center;
-  -webkit-transition: -webkit-transform .2s ease-in-out;
-  transition: -webkit-transform .2s ease-in-out;
-  transition: transform .2s ease-in-out;
-  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
 }
 
 .picto__cart--wheel2 {
   fill: #DEDEDE;
-  -webkit-transform-origin: center center;
-          transform-origin: center center;
-  -webkit-transition: -webkit-transform .2s ease-in-out;
-  transition: -webkit-transform .2s ease-in-out;
-  transition: transform .2s ease-in-out;
-  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
 }
 
 main {
@@ -1188,16 +1166,6 @@ main {
 .product__cta:hover .picto__cart--basket {
   -webkit-transform: scale(1.1) translate(-1298.215px, 38px) rotate(-3deg);
           transform: scale(1.1) translate(-1298.215px, 38px) rotate(-3deg);
-}
-
-.product__cta:hover .picto__cart--wheel {
-  -webkit-transform: scale(1.2) translate(21.723px, 22.804px);
-          transform: scale(1.2) translate(21.723px, 22.804px);
-}
-
-.product__cta:hover .picto__cart--wheel2 {
-  -webkit-transform: scale(1.3) translate(13px, 22.804px);
-          transform: scale(1.3) translate(13px, 22.804px);
 }
 
 .product__cta:hover {

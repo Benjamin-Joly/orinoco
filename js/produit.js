@@ -1,7 +1,14 @@
 const pageId = localStorage.getItem('trackedLink').split(',')[0];
+const getPageId = () => {
+    if(pageId !== "undefined"){
+        return pageId
+    }else{
+        return window.location.href = "../index.html";
+    }
+}
 const productWrap = document.createElement('div');
 console.log(pageId);
-const urlProductPage = `https://oc-p5-api.herokuapp.com/api/cameras/${pageId}`;
+const urlProductPage = `https://oc-p5-api.herokuapp.com/api/cameras/${getPageId()}`;
 const urlProductPageT =`https://ab-p5-api.herokuapp.com/api/teddies/${pageId}`;
 let productPageObj;
 const productPageSection = document.getElementById('product-page__section');
