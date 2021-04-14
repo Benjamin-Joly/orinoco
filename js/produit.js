@@ -104,6 +104,6 @@ const buildProductPage = () => {
 
 //////////////////////////////////fix unload bug on productPage
 
-window.addEventListener('unload', (e) => {
+window.addEventListener('popstate', (e) => {
     window.location.href ='../index.html';
 });
