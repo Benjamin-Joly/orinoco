@@ -40,7 +40,7 @@ fetch(url).then((response) => {
   return activeValidBtn();
 }).then(() => {
   ////////////cart.js/////////activate validation if there is any product ordered
-  if(typeof(buildSummaryFromOrder)=== "function"){
+  if(typeof(buildSummaryFromOrder)!== "undefined"){
     return buildSummaryFromOrder();
   }
 }).then(() => {
