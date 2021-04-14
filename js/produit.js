@@ -105,5 +105,5 @@ const buildProductPage = () => {
 //////////////////////////////////fix unload bug on productPage
 
 window.addEventListener('unload', (e) => {
-    window.history.go(-1);
+    window.location.href ='../index.html';
 });
