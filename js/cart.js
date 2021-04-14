@@ -110,13 +110,8 @@ const supprBuiltItems = () => {
 
   window.addEventListener('pageshow', () => {
     selectedItemWrap.innerHTML = "";
-    resultOrder.forEach((el) => {
-      let commonIdFiltered = getCommonId(el);
-      let commonId = commonIdFiltered[0];
-      buildSelectedProduct(commonId);
-    })
-    //clientResult();
-    /*if(typeof(buildSelectedItems) !== "undefined"){ 
+    clientResult();
+    if(typeof(buildSelectedItems) !== "undefined"){ 
       buildSelectedItems();
-    }*/
+    }
   });
