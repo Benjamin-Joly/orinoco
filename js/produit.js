@@ -1,4 +1,5 @@
 const pageId = localStorage.getItem('trackedLink').split(',')[0];
+
 const getPageId = () => {
     if(pageId !== "undefined"){
         return pageId
@@ -6,6 +7,7 @@ const getPageId = () => {
         return window.location.href = "../index.html";
     }
 }
+
 const productWrap = document.createElement('div');
 console.log(pageId);
 const urlProductPage = `https://oc-p5-api.herokuapp.com/api/cameras/${getPageId()}`;
@@ -100,5 +102,8 @@ const buildProductPage = () => {
     productHero.appendChild(productWrap);
 }
 
-//////////////////////////////////anim radio inputs
+//////////////////////////////////fix unload bug on productPage
 
+window.addEventListener('unload', (e) => {
+    window.history.go(-1);
+});
