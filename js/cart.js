@@ -107,11 +107,3 @@ const supprBuiltItems = () => {
     document.location.reload();
 });
 
-
-  window.addEventListener('pageshow', () => {
-    selectedItemWrap.innerHTML = "";
-    clientResult();
-    if(typeof(buildSelectedItems) !== "undefined"){ 
-      buildSelectedItems();
-    }
-  });
