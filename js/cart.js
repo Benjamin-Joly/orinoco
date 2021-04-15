@@ -14,7 +14,7 @@ const displayCartNotif = () => {
   } 
 }
 
-const calculateCartValue = (product) => {
+const loadCartValue = () => {
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
   const items = resultOrder.map(x => {
     commonId = getCommonId(x);
@@ -24,6 +24,9 @@ const calculateCartValue = (product) => {
   console.log(items);
   totalCart = items.reduce((reducer));
   console.log(totalCart);
+}
+
+const calculateCartValue = (product) => {
   let cartResult = totalCart += product.price;
   totalCart==cartResult;
   totalCartField.textContent = `${totalCart} €`;
@@ -44,6 +47,9 @@ const buildSelectedProduct = (value) => {
 ////////////////////////////////////////////////cart add order items onload and onclick
 const buildSelectedItems = () => {
   resetCartShow();
+  if(localStorage.getItem('order' !== null)){
+    loadCartValue();
+  }
   if(resultOrder.length >= 0){
     activeValidBtn(); 
     resultOrder.forEach(el => {
