@@ -15,15 +15,19 @@ const displayCartNotif = () => {
 }
 
 const loadCartValue = () => {
-  const reducer = (accumulator, currentValue) => accumulator + currentValue;
-  const items = resultOrder.map(x => {
-    commonId = getCommonId(x);
-    commonIdFiltered = commonId[0].price;
-    return commonIdFiltered;
-  })
-  console.log(items);
-  totalCart = items.reduce((reducer));
-  console.log(totalCart);
+  if(localStorage.getItem('order') !== null){
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    const items = resultOrder.map(x => {
+      commonId = getCommonId(x);
+      commonIdFiltered = commonId[0].price;
+      return commonIdFiltered;
+    })
+    console.log(items);
+    totalCart = items.reduce((reducer));
+    console.log(totalCart);
+  }else{
+    totalCart = 0;
+  }
 }
 
 const calculateCartValue = (product) => {
@@ -47,9 +51,7 @@ const buildSelectedProduct = (value) => {
 ////////////////////////////////////////////////cart add order items onload and onclick
 const buildSelectedItems = () => {
   resetCartShow();
-  if(localStorage.getItem('order' !== null)){
     loadCartValue();
-  }
   if(resultOrder.length >= 0){
     activeValidBtn(); 
     resultOrder.forEach(el => {
