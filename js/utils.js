@@ -46,23 +46,23 @@ const activeValidBtn = () => {
 ///////////////////////////////////////////////////////////////////update and set the client view of the order depending on what's stored in local storage <== very important
   function clientResult(){
    if(localStorage.length === 0){
-      totalCartField.textContent==="0";
+      totalCartField.textContent=="0";
       orderResults.style.display = "none";
       orderResultsWrap.style.display = "none";
-   }else if(localStorage.getItem('order') === null){
+   }else if(localStorage.getItem('order') == null){
     totalCartField.textContent=="0";
-    resultOrder === [];
+    resultOrder = [];
    }else if(localStorage.length > 0){
     resultOrder = localStorage.getItem('order').split(',');
-    totalCartField.textContent===resultOrder.length;
+    totalCartField.textContent==resultOrder.length;
     }else{
-    totalCartField.textContent==="0";
+    totalCartField.textContent=="0";
    }///////////////////////////////fix in case of 1rst array itm is empty after rmv itm
    if(resultOrder[0] === ""){
     resultOrder.splice(0, 1);
   }
   return resultOrder;
-}
+  }
 
 ///////////////////////////////////////////////////////////////////display and update cart amount
 
