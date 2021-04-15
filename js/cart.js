@@ -15,6 +15,15 @@ const displayCartNotif = () => {
 }
 
 const calculateCartValue = (product) => {
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  const items = resultOrder.map(x => {
+    commonId = getCommonId(x);
+    commonIdFiltered = commonId[0].price;
+    return commonIdFiltered;
+  })
+  console.log(items);
+  totalCart = items.reduce((reducer));
+  console.log(totalCart);
   let cartResult = totalCart += product.price;
   totalCart==cartResult;
   totalCartField.textContent = `${totalCart} €`;
@@ -100,16 +109,4 @@ const supprBuiltItems = () => {
 
 const resetCartShow = () => {
   selectedItemWrap.innerHTML = "";
-  totalCart = 0;
-  
-  let commonId;
-  let items = resultOrder.map(x => {
-    commonId = getCommonId(x);
-    commonId = commonId[0]
-    return commonId.price;
-  });
-  const reducer = (accumulator, currentValue) => accumulator + currentValue;
-  let allCart = items.reduce((reducer));
-  totalCart.textContent = allCart/=100;
-  
 }
