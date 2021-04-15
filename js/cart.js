@@ -16,6 +16,7 @@ const displayCartNotif = () => {
 
 const loadCartValue = () => {
   if(localStorage.getItem('order') !== null){
+    totalCart = 0;
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     const items = resultOrder.map(x => {
       commonId = getCommonId(x);
