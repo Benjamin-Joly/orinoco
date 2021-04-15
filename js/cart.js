@@ -23,8 +23,8 @@ const loadCartValue = () => {
       commonIdFiltered = commonId[0].price;
       return commonIdFiltered;
     })
-    console.log(items);
     totalCart = items.reduce((reducer));
+    totalCartField.textContent = `${totalCart} €`;
     console.log(totalCart);
   }else{
     totalCart = 0;
@@ -32,8 +32,7 @@ const loadCartValue = () => {
 }
 
 const calculateCartValue = (product) => {
-  let cartResult = totalCart += product.price;
-  totalCart==cartResult;
+  totalCart += product.price;
   totalCartField.textContent = `${totalCart} €`;
   orderResults.textContent = resultOrder.length;
 }
