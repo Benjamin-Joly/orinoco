@@ -97,13 +97,6 @@ const supprBuiltItems = () => {
     document.location.reload();
 });
 
-/*
-  window.addEventListener('pageshow', () => {
-    clientResult();
-    console.log(productList);
-      resultOrder.forEach((product) => {
-       let commonId = getCommonId(product);
-       console.log(commonId);
-      })
-  });
-*/
+window.addEventListener('popstate', () => {
+  document.location.reload();
+})
