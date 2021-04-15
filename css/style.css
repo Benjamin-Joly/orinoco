@@ -158,11 +158,6 @@ h1, h2, p {
   height: 60px;
 }
 
-.logo__letter {
-  -webkit-transform-origin: center center;
-          transform-origin: center center;
-}
-
 .picto__cart--bg {
   fill: #030333;
 }
