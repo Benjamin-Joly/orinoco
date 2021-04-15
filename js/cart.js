@@ -103,6 +103,5 @@ const resetCartShow = () => {
   totalCart === 0;
   let commonIdFiltered = getCommonId(resultOrder);
               let commonId = commonIdFiltered[0];
-              buildSelectedProduct(commonId);
               calculateCartValue(commonId);
 }
