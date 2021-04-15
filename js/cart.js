@@ -52,6 +52,7 @@ const buildSelectedProduct = (value) => {
 ////////////////////////////////////////////////cart add order items onload and onclick
 const buildSelectedItems = () => {
   resetCartShow();
+  clientResult();
     loadCartValue();
   if(resultOrder.length >= 0){
     activeValidBtn(); 
