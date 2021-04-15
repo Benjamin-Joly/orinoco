@@ -2,7 +2,6 @@
 const postFormBtn = document.querySelector('.post-form__btn');
 
 postFormBtn.addEventListener('click', (e) => {
-  e.preventDefault();
   //////////////////////////////////////////////////////////////////get the input values
   const firstName = document.getElementById('first-name').value;
   const lastName = document.getElementById('last-name').value;

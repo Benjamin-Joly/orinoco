@@ -3,6 +3,7 @@ console.log(orderSummaryWrap);
 console.log(resultOrder);
 
 const buildSummaryFromOrder = () => {
+    orderSummaryWrap.innerHTML = "";//expe
     let orderFilter;
     if(resultOrder.length>=0 || resultOrder !== null || resultOrder !== ""){
         resultOrder.forEach((el) => {
