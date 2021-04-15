@@ -100,5 +100,5 @@ const supprBuiltItems = () => {
 
 const resetCartShow = () => {
   selectedItemWrap.innerHTML = "";
-  totalCart === 0;
+  return totalCart = 0;
 }
