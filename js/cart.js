@@ -100,7 +100,7 @@ const supprBuiltItems = () => {
 
 const resetCartShow = () => {
   selectedItemWrap.innerHTML = "";
-  //totalCart = 0;
+  totalCart = 0;
   /*
   let commonId;
   let items = resultOrder.map(x => {
