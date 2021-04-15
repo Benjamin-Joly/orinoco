@@ -1,5 +1,6 @@
 const pageId = localStorage.getItem('trackedLink').split(',')[0];
 
+
 const getPageId = () => {
     if(pageId !== "undefined"){
         return pageId
@@ -9,7 +10,6 @@ const getPageId = () => {
 }
 
 const productWrap = document.createElement('div');
-console.log(pageId);
 const urlProductPage = `https://oc-p5-api.herokuapp.com/api/cameras/${getPageId()}`;
 const urlProductPageT =`https://ab-p5-api.herokuapp.com/api/teddies/${pageId}`;
 let productPageObj;
