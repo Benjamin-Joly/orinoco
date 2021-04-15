@@ -35,6 +35,7 @@ window.addEventListener('pageshow', async () => {
   }catch(e){
     console.log(e);
   }
+  resetCartShow();
   parsePriceUnit();
   if(typeof(createNewItem) !== 'undefined'){
     createNewItem();
