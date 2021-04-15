@@ -28,6 +28,7 @@ const loadCartValue = () => {
     console.log(totalCart);
   }else{
     totalCart = 0;
+    return totalCartField.textContent = `${totalCart} €`;
   }
 }
 
