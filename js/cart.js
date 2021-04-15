@@ -34,7 +34,7 @@ const buildSelectedProduct = (value) => {
 
 ////////////////////////////////////////////////cart add order items onload and onclick
 const buildSelectedItems = () => {
-  resetCartShow();
+  //resetCartShow();
   if(resultOrder.length >= 0){
     activeValidBtn(); 
     resultOrder.forEach(el => {
@@ -100,5 +100,16 @@ const supprBuiltItems = () => {
 
 const resetCartShow = () => {
   selectedItemWrap.innerHTML = "";
-  return totalCart = 0;
+  //totalCart = 0;
+  /*
+  let commonId;
+  let items = resultOrder.map(x => {
+    commonId = getCommonId(x);
+    commonId = commonId[0]
+    return commonId.price;
+  });
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  let allCart = items.reduce((reducer));
+  totalCart.textContent = allCart/=100;
+  */
 }

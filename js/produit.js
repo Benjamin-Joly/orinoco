@@ -64,6 +64,7 @@ const buildOptionForm = () => {
         productBtnBhvr();
         clientResult(); 
         buildSelectedProduct(productPageObj);
+        calculateCartValue(productPageObj);
         displayCartNotif(); 
         cartAnimLaunch();
         activeValidBtn();
