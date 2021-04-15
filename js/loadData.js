@@ -36,6 +36,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 })
 
 
+window.addEventListener('pageshow', async () => {
+  try{
+    productList = await loadData();
+  }catch(e){
+    console.log(e);
+  }
+  parsePriceUnit();
+  if(typeof(createNewItem) !== 'undefined'){
+    createNewItem();
+    cartBtnBhvr();
+  }
+  clientResult();
+  buildSelectedItems();
+  activeValidBtn();
+})
+
 /*
 const loadData = () => {
   fetch(url)

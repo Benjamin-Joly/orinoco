@@ -34,6 +34,7 @@ const buildSelectedProduct = (value) => {
 
 ////////////////////////////////////////////////cart add order items onload and onclick
 const buildSelectedItems = () => {
+  resetCartShow();
   if(resultOrder.length >= 0){
     activeValidBtn(); 
     resultOrder.forEach(el => {
@@ -97,6 +98,7 @@ const supprBuiltItems = () => {
     document.location.reload();
 });
 
-window.addEventListener('popstate', () => {
-  document.location.reload();
-})
+const resetCartShow = () => {
+  selectedItemWrap.innerHTML = "";
+  totalCart === 0;
+}
