@@ -100,8 +100,5 @@ const supprBuiltItems = () => {
 
 const resetCartShow = () => {
   selectedItemWrap.innerHTML = "";
-  totalCart === 0;
-  let commonIdFiltered = getCommonId(resultOrder);
-              let commonId = commonIdFiltered[0];
-              calculateCartValue(commonId);
+  totalCart = 0; 
 }
