@@ -16,7 +16,7 @@ const displayCartNotif = () => {
 
 const calculateCartValue = (product) => {
   let cartResult = totalCart += product.price;
-  totalCart===cartResult;
+  totalCart==cartResult;
   totalCartField.textContent = `${totalCart} €`;
   orderResults.textContent = resultOrder.length;
 }
@@ -64,7 +64,7 @@ const supprBuiltItems = () => {
   rmvBtn = Array.from(document.querySelectorAll('.rmv__btn'));
   const currentCart = document.getElementById('current__cart');
   currentCart.addEventListener('click', (e) => {
-    if(resultOrder[0] === ""){
+    if(resultOrder[0] == ""){
       resultOrder.splice(0, 1);
     }
     const item = e.target;
@@ -72,7 +72,7 @@ const supprBuiltItems = () => {
     const removedId = resultOrder.splice(id, 1);
     let objFromOrder = getCommonId(item.value);
     let cartResult = totalCart -= objFromOrder[0].price;
-    totalCart===cartResult;
+    totalCart==cartResult;
     totalCartField.textContent = `${totalCart} €`;
     orderResults.textContent = resultOrder.length;
     localStorage.setItem('order', resultOrder);
@@ -84,7 +84,7 @@ const supprBuiltItems = () => {
           localStorage.removeItem('order');
         }
     const parent = item.parentElement;
-    if(item.classList[1] === 'rmv__btn'){
+    if(item.classList[1] == 'rmv__btn'){
       parent.remove(parent);
     }
     if(typeof(removeSummaryItem) !== "undefined"){
@@ -100,5 +100,5 @@ const supprBuiltItems = () => {
 
 const resetCartShow = () => {
   selectedItemWrap.innerHTML = "";
-  totalCart = 0; 
+  totalCart === 0;
 }
