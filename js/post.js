@@ -1,7 +1,16 @@
 /////////////////////////////////////////////////*****************Write the Data in the right format and POST a contact form with the order */
 const postFormBtn = document.querySelector('.post-form__btn');
+const inputs = Array.from(document.querySelectorAll('.order-input'));
+  
+inputs.forEach((input) => {
+  input.addEventListener('invalid', () => {
+    postFormBtn.style.opacity = 0.5;
+    postFormBtn.style.pointerEvents = 'none';
+  })
+})
 
 postFormBtn.addEventListener('click', (e) => {
+ //e.preventDefault(); 
   //////////////////////////////////////////////////////////////////get the input values
   const firstName = document.getElementById('first-name').value;
   const lastName = document.getElementById('last-name').value;
@@ -9,7 +18,6 @@ postFormBtn.addEventListener('click', (e) => {
   const city = document.getElementById('city').value;
   const email = document.getElementById('email').value;
 ////////////////////////////////Regex and security.
-
 
 
 //////////////////////////////////////////////////////////////////write the POST request with the right format and POST client side order data
@@ -35,9 +43,20 @@ postFormBtn.addEventListener('click', (e) => {
   };
   
   fetch("https://oc-p5-api.herokuapp.com/api/cameras/order", requestOptions)
-    .then(response => response.text())
+    .then((response) => {
+      if(response.ok === true){
+        response.text()
+        console.log('stylé');
+        redirectToconfirm();
+      }
+    })
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-
-  let resultArea = document.getElementById('result-text');
 });
+
+
+const redirectToconfirm = () => {
+  setTimeout(() => {
+    window.location.href = "../pages/confirm.html";
+  }, 300)
+}

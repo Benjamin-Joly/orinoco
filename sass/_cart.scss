@@ -12,12 +12,14 @@
         bottom:0;
         background:$med-color;
         transform: translateX(100vw);
-        transition: transform ease-in-out .3s;
+        opacity: 0;
+        transition: transform ease-in-out .3s, opacity ease-in-out .3s;
             @media(max-width:860px){
                 background:$light-color;
             }
             &--open{
                 transform: translateX(0)!important;
+                opacity: 1;
             }
     }
 }

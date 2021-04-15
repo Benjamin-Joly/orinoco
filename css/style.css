@@ -500,10 +500,11 @@ main {
   background: #DEDEDE;
   -webkit-transform: translateX(100vw);
           transform: translateX(100vw);
-  -webkit-transition: -webkit-transform ease-in-out .3s;
-  transition: -webkit-transform ease-in-out .3s;
-  transition: transform ease-in-out .3s;
-  transition: transform ease-in-out .3s, -webkit-transform ease-in-out .3s;
+  opacity: 0;
+  -webkit-transition: opacity ease-in-out .3s, -webkit-transform ease-in-out .3s;
+  transition: opacity ease-in-out .3s, -webkit-transform ease-in-out .3s;
+  transition: transform ease-in-out .3s, opacity ease-in-out .3s;
+  transition: transform ease-in-out .3s, opacity ease-in-out .3s, -webkit-transform ease-in-out .3s;
 }
 
 @media (max-width: 860px) {
@@ -515,6 +516,7 @@ main {
 .cart__wrap--open {
   -webkit-transform: translateX(0) !important;
           transform: translateX(0) !important;
+  opacity: 1;
 }
 
 #total-cart {
@@ -942,8 +944,8 @@ main {
 }
 
 .product__wrap:hover .product__img {
-  -webkit-clip-path: path("M 600 0 L 600 600 L 0 600 L 0 324.05 L 20 263.29 L 10 203.66 L 24 142.25 L 0 80.36 L 24 0 Z");
-          clip-path: path("M 600 0 L 600 600 L 0 600 L 0 324.05 L 20 263.29 L 10 203.66 L 24 142.25 L 0 80.36 L 24 0 Z");
+  -webkit-clip-path: path("M 600 0 L 600 600 L 0 600 L 0 324.05 L 20 200 L 10 203.66 L 20 142.25 L 0 80.36 L 24 0 Z");
+          clip-path: path("M 600 0 L 600 600 L 0 600 L 0 324.05 L 20 200 L 10 203.66 L 20 142.25 L 0 80.36 L 24 0 Z");
 }
 
 .product__wrap:hover::after {

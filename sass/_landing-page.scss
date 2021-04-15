@@ -59,7 +59,7 @@
                 transition:opacity .2s ease-in-out;
             }
             &:hover .product__img{
-                clip-path: path('M 600 0 L 600 600 L 0 600 L 0 324.05 L 20 263.29 L 10 203.66 L 24 142.25 L 0 80.36 L 24 0 Z');
+                clip-path: path('M 600 0 L 600 600 L 0 600 L 0 324.05 L 20 200 L 10 203.66 L 20 142.25 L 0 80.36 L 24 0 Z');
             }
             &:hover::after{
                 opacity: 1;

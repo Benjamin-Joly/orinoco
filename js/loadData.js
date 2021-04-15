@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   buildSelectedItems();
   sumFromOrder();
   activeValidBtn();
-
+  loadCartValue();
   if(typeof(buildSummaryFromOrder)!== "undefined"){
     return buildSummaryFromOrder();
   }
@@ -43,7 +43,7 @@ window.addEventListener('pageshow', async () => {
   clientResult();
   buildSelectedItems();
   activeValidBtn();
-
+  loadCartValue();
   if(typeof(removeSummaryItem)!== "undefined"){
     return removeSummaryItem();
   }
