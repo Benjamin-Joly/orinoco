@@ -34,7 +34,7 @@ const buildSelectedProduct = (value) => {
 
 ////////////////////////////////////////////////cart add order items onload and onclick
 const buildSelectedItems = () => {
-  //resetCartShow();
+  resetCartShow();
   if(resultOrder.length >= 0){
     activeValidBtn(); 
     resultOrder.forEach(el => {
