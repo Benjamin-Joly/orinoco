@@ -1,13 +1,55 @@
 /////////////////////////////////////////////////*****************Write the Data in the right format and POST a contact form with the order */
 const postFormBtn = document.querySelector('.post-form__btn');
-const inputs = Array.from(document.querySelectorAll('.order-input'));
-  
-inputs.forEach((input) => {
-  input.addEventListener('invalid', () => {
-    postFormBtn.style.opacity = 0.5;
-    postFormBtn.style.pointerEvents = 'none';
+let inputs = Array.from(document.querySelectorAll('.order-input'));
+inputs.pop();
+const emailInput = document.getElementById('email');
+const alphaNum = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9- ]*$/;
+const emailRegx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const allInputs = Array.from(document.querySelectorAll('.order-input'));
+
+window.addEventListener('pageshow', () => {
+  allInputs.forEach((input) => {
+    input.value = "";
   })
 })
+
+postFormBtn.classList.add('invalid__btn');
+postFormBtn.setAttribute('tabindex', '-1');
+
+const allInputsFilled = () => {
+ let invalidInputs = Array.from(document.querySelectorAll('.invalid__input'));
+ let requiredInputs = Array.from(document.querySelectorAll('.required__input'));
+ if(invalidInputs.length === 0 && requiredInputs.length === 0){
+  postFormBtn.classList.remove('invalid__btn');
+  postFormBtn.setAttribute('tabindex', '0');
+ }
+}
+
+inputs.forEach((input) => {
+  input.addEventListener('change', () => {
+    inputValidation(input, alphaNum); 
+    allInputsFilled();
+  })
+  input.addEventListener('click', ()=> {
+    console.log(inputs);
+  })
+})
+
+emailInput.addEventListener('change', () => {
+  inputValidation(emailInput, emailRegx);
+  allInputsFilled();
+})
+
+const inputValidation = (input, regX) => {
+  if(input.value.length > 1 && input.value.length < 100 && regX.test(input.value) === true){
+    input.classList.remove('invalid__input');
+    input.classList.remove('required__input');
+    console.log(alphaNum.test(input.value));
+  }else{
+    input.classList.add('invalid__input');
+    console.log(alphaNum.test(input.value));
+  }
+}
 
 postFormBtn.addEventListener('click', (e) => {
  //e.preventDefault(); 
@@ -18,6 +60,9 @@ postFormBtn.addEventListener('click', (e) => {
   const city = document.getElementById('city').value;
   const email = document.getElementById('email').value;
 ////////////////////////////////Regex and security.
+
+
+
 
 
 //////////////////////////////////////////////////////////////////write the POST request with the right format and POST client side order data
@@ -43,14 +88,9 @@ postFormBtn.addEventListener('click', (e) => {
   };
   
   fetch("https://oc-p5-api.herokuapp.com/api/cameras/order", requestOptions)
-    .then((response) => {
-      if(response.ok === true){
-        response.text()
-        console.log('stylé');
-        redirectToconfirm();
-      }
-    })
+    .then((response) => response.text())
     .then(result => console.log(result))
+    .then(() => {return redirectToconfirm()})
     .catch(error => console.log('error', error));
 });
 

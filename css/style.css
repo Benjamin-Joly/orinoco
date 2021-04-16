@@ -1772,4 +1772,22 @@ input[type="radio"]:checked ~ label .check__descr {
     margin-top: 1.2em;
   }
 }
+
+.invalid__input {
+  background: rgba(255, 78, 78, 0.281) !important;
+}
+
+.invalid__btn {
+  pointer-events: none;
+  opacity: .5;
+}
+
+.invalid__btn:focus {
+  pointer-events: none;
+}
+
+.required__input {
+  background: #002a7d3f 255, 78, 78, 0.281 !important;
+  border: solid #030333 2px !important;
+}
 /*# sourceMappingURL=style.css.map */

@@ -142,3 +142,23 @@
         margin-top:1.2em;
     }
 }
+
+.invalid{
+    &__input{
+        background: rgba(255, 78, 78, 0.281) !important;
+    }
+    &__btn{
+        pointer-events: none;
+        opacity:.5;
+            &:focus{
+                pointer-events: none;
+            }
+    }
+}
+
+.required{
+    &__input{
+        background: $call-color-opacity(255, 78, 78, 0.281) !important;
+        border: solid $contrast-color 2px !important;
+    }
+}
