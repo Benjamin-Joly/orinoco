@@ -63,7 +63,6 @@
           el.addEventListener('click', (e) => {
             delay();
             const trackedId = el.dataset.link;
-            console.log(trackedId);
             localStorage.setItem(['trackedLink'] , trackedId);
           })
       })           

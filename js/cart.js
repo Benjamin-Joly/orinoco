@@ -25,7 +25,6 @@ const loadCartValue = () => {
     })
     totalCart = items.reduce((reducer));
     totalCartField.textContent = `${totalCart} €`;
-    console.log(totalCart);
   }else{
     totalCart = 0;
     return totalCartField.textContent = `${totalCart} €`;

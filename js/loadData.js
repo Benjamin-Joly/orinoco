@@ -1,5 +1,4 @@
 
-////////////////////////////////contact API get and save DATA on separated arrays
 async function loadData() {
   const response = await fetch(url);
   const data = await response.json();
@@ -11,8 +10,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     productList = await loadData();
   }catch(e){
     console.log(e);
+    alertHeading.textContent = "Data still looking for a way to reach you, please reload the page."
   }
-  parsePriceUnit();
+  parsePriceUnit(productList);
   if(typeof(createNewItem) !== 'undefined'){
     createNewItem();
     cartBtnBhvr();
@@ -35,7 +35,7 @@ window.addEventListener('pageshow', async () => {
   }catch(e){
     console.log(e);
   }
-  parsePriceUnit();
+  parsePriceUnit(productList);
   if(typeof(createNewItem) !== 'undefined'){
     createNewItem();
     cartBtnBhvr();

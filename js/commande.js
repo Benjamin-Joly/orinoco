@@ -1,9 +1,7 @@
 const orderSummaryWrap = document.querySelector('.order-summary__wrap');
-console.log(orderSummaryWrap);
-console.log(resultOrder);
 
 const buildSummaryFromOrder = () => {
-    orderSummaryWrap.innerHTML = "";//expe
+    orderSummaryWrap.innerHTML = "";
     let orderFilter;
     if(resultOrder.length>=0 || resultOrder !== null || resultOrder !== ""){
         resultOrder.forEach((el) => {

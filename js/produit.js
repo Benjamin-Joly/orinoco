@@ -24,9 +24,7 @@ const parsePriceProductP = () => {
 
 //////////////////////////////////////load-data from API+productID stored in localStorage
 fetch(urlProductPage).then((response) => response.json().then((data) => {
-    console.log(data);
     productPageObj = data;
-    console.log(productPageObj);
     return productPageObj;
 }).then(() => {
     //////////////////////////////////////set new document name from ID.name
@@ -51,7 +49,6 @@ const productBtnBhvr = () => {
 const buildOptionForm = () => {
     const lenses = productPageObj.lenses;
     let inputWrap;
-    console.log(lenses);
     const optForm = document.createElement('form');
     optForm.classList.add('product-p__form');
     productWrap.appendChild(optForm);
@@ -69,7 +66,6 @@ const buildOptionForm = () => {
         cartAnimLaunch();
         activeValidBtn();
         orderResults.textContent = resultOrder.length;
-        console.log(e);
     })
     const buildInputs = () => {
         lenses.forEach(el => {

@@ -15,13 +15,15 @@ window.addEventListener('pageshow', () => {
 
 postFormBtn.classList.add('invalid__btn');
 postFormBtn.setAttribute('tabindex', '-1');
+postFormBtn.setAttribute('disable', 'true');
 
 const allInputsFilled = () => {
  let invalidInputs = Array.from(document.querySelectorAll('.invalid__input'));
  let requiredInputs = Array.from(document.querySelectorAll('.required__input'));
- if(invalidInputs.length === 0 && requiredInputs.length === 0){
+ if(invalidInputs.length === 0 && requiredInputs.length === 0 && resultOrder.length >0){
   postFormBtn.classList.remove('invalid__btn');
   postFormBtn.setAttribute('tabindex', '0');
+  postFormBtn.setAttribute('disable', 'false');
  }
 }
 
@@ -29,9 +31,6 @@ inputs.forEach((input) => {
   input.addEventListener('change', () => {
     inputValidation(input, alphaNum); 
     allInputsFilled();
-  })
-  input.addEventListener('click', ()=> {
-    console.log(inputs);
   })
 })
 
@@ -44,10 +43,8 @@ const inputValidation = (input, regX) => {
   if(input.value.length > 1 && input.value.length < 100 && regX.test(input.value) === true){
     input.classList.remove('invalid__input');
     input.classList.remove('required__input');
-    console.log(alphaNum.test(input.value));
   }else{
     input.classList.add('invalid__input');
-    console.log(alphaNum.test(input.value));
   }
 }
 
@@ -90,7 +87,7 @@ postFormBtn.addEventListener('click', (e) => {
   fetch("https://oc-p5-api.herokuapp.com/api/cameras/order", requestOptions)
     .then((response) => response.text())
     .then(result => console.log(result))
-    .then(() => {return redirectToconfirm()})
+    //.then(() => {return redirectToconfirm()})
     .catch(error => console.log('error', error));
 });
 

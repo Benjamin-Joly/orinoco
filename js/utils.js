@@ -29,8 +29,8 @@ let totalCartField = document.getElementById('total-cart');
 let totalCart = 0;
 
 /////////////////////////////////////////////////*****************parce the price value by 100 */
-const parsePriceUnit = () => {
-  productList.forEach(el => {
+const parsePriceUnit = (array) => {
+  array.forEach(el => {
     return el.price === (el.price/=100);
   });
 }
