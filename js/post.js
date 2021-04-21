@@ -47,6 +47,7 @@ const inputValidation = (input, regX) => {
     input.classList.add('invalid__input');
     postFormBtn.classList.add('invalid__btn');
     postFormBtn.setAttribute('disable', 'true');
+    postFormBtn.setAttribute('tabindex', '-1');
   }
 }
 
