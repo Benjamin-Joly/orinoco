@@ -88,7 +88,7 @@ postFormBtn.addEventListener('click', (e) => {
   fetch("https://oc-p5-api.herokuapp.com/api/cameras/order", requestOptions)
     .then((response) => response.text())
     .then(result => console.log(result))
-    //.then(() => {return redirectToconfirm()})
+    .then(() => {return redirectToconfirm()})
     .catch(error => console.log('error', error));
 });
 
