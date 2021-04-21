@@ -46,6 +46,7 @@ const inputValidation = (input, regX) => {
   }else{
     input.classList.add('invalid__input');
     postFormBtn.classList.add('invalid__btn');
+    postFormBtn.setAttribute('disable', 'true');
   }
 }
 
