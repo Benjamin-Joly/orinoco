@@ -40,7 +40,7 @@ emailInput.addEventListener('input', () => {
 })
 
 const inputValidation = (input, regX) => {
-  if(input.value.length > 1 && input.value.length < 100 && regX.test(input.value) === true){
+  if(input.value.length > 1 && input.value.length < 100 && regX.test(input.value) === true && resultOrder.length > 0){
     input.classList.remove('invalid__input');
     input.classList.remove('required__input');
   }else{
