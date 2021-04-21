@@ -28,13 +28,13 @@ const allInputsFilled = () => {
 }
 
 inputs.forEach((input) => {
-  input.addEventListener('change', () => {
+  input.addEventListener('input', () => {
     inputValidation(input, alphaNum); 
     allInputsFilled();
   })
 })
 
-emailInput.addEventListener('change', () => {
+emailInput.addEventListener('input', () => {
   inputValidation(emailInput, emailRegx);
   allInputsFilled();
 })
@@ -45,6 +45,7 @@ const inputValidation = (input, regX) => {
     input.classList.remove('required__input');
   }else{
     input.classList.add('invalid__input');
+    postFormBtn.classList.add('invalid__btn');
   }
 }
 
